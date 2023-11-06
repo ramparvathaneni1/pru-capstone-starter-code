@@ -3,9 +3,9 @@ const cors = require("cors");
 const Pool = require("pg").Pool;
 const pool = new Pool({
   user: "postgres",
-  host: "localhost",
-  database: "your_app_db",
-  password: "postgres",
+  host: "db",
+  database: "capstone_db",
+  password: "docker",
   port: 5432,
 });
 

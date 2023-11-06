@@ -1,11 +1,11 @@
-CREATE DATABASE your_app_name_db;
-\c your_app_name_db;
+CREATE DATABASE capstone_db;
+\c capstone_db;
 
-CREATE TABLE name_of_your_table (
+CREATE TABLE capstone_table (
   ID SERIAL PRIMARY KEY,
-  title VARCHAR(50),
-  done BOOLEAN
+  first_name VARCHAR(50),
+  last_name VARCHAR(50)
 );
 
-INSERT INTO name_of_your_table (title, done)
-  VALUES ('Get Milk', false), ('Walk Dog', false);
+INSERT INTO capstone_table (first_name, last_name)
+  VALUES ('Marc', 'Wright'), ('Ben', 'Piper'), ('Troy', 'Swayzee');
