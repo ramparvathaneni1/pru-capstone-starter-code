@@ -1,6 +1,17 @@
 const express = require("express");
 const cors = require("cors");
 const Pool = require("pg").Pool;
+
+// TO RUN YOUR SERVER LOCALLY, USE THIS POOL VARIABLE
+// const pool = new Pool({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "capstone_db",
+//   password: "postgres",s
+//   port: 5432,
+//   });
+
+  // FOR DOCKER COMPOSE, USE THIS VARIABLE
 const pool = new Pool({
   user: "postgres",
   host: "db",
@@ -14,7 +25,12 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hi There");
+  pool.query("SELECT * FROM capstone_table ORDER BY id ASC", (error, results) => {
+    if (error) throw error;
+
+    console.log(results);
+    res.status(200).json({capstone_table_results: results.rows});
+  });
 });
 
 const server = app.listen("3001", () => {});

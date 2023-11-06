@@ -1,6 +1,3 @@
-CREATE DATABASE capstone_db;
-\c capstone_db;
-
 CREATE TABLE capstone_table (
   ID SERIAL PRIMARY KEY,
   first_name VARCHAR(50),

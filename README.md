@@ -63,6 +63,18 @@ These npm packages are pre-installed:
 
   _Note - If you're asked, the default password for the `postgres` user is `postgres`_
 
+- In `index.js`, the `pool` variable should like like this:
+
+   ```js
+   const pool = new Pool({
+   user: "postgres",
+   host: "localhost",
+   database: "capstone_db",
+   password: "postgres",
+   port: 5432,
+   });
+   ```
+
 <br>
 
 ## `frontend`
@@ -84,3 +96,23 @@ These npm packages are pre-installed:
 
 - [Testing React With Jest Walkthrough](https://git.generalassemb.ly/ModernEngineering/testing-react-with-jest-walkthrough)
 - [Selenium Walkthrough](https://git.generalassemb.ly/ModernEngineering/selenium-walkthrough)
+
+<br>
+
+## Docker Compose
+
+1. Make sure your postgresql service is stopped: `sudo service postgresql stop`
+
+1. To use Docker Compose, in `backend/index.js`, update the pool variable:
+
+```js
+const pool = new Pool({
+  user: "postgres",
+  host: "db",
+  database: "capstone_db",
+  password: "docker",
+  port: 5432,
+});
+```
+
+1. `sudo docker-compose up -d --build`
