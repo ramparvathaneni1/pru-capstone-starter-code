@@ -16,9 +16,11 @@ These npm packages are pre-installed:
 - [Testing Express With Supertest](https://git.generalassemb.ly/ModernEngineering/testing-express-with-supertest)
 - [Dockerize Todo App](https://git.generalassemb.ly/ModernEngineering/dockerize-to-do-app)
 
-#### To start the server
+#### Getting Started
 
-Run `npm run start` to start the server on port 3001
+1. `cd backend`
+1. `npm i`
+1. `npm run start` will start the server on port 3001
 
 <br>
 
@@ -40,9 +42,11 @@ These npm packages are pre-installed:
 - [Material UI](https://mui.com/material-ui/)
 - [React Router Dom](https://reactrouter.com/en/main)
 
-#### To start the server
+#### Getting Started
 
-Run `npm start` to start the server on port 3000
+1. `cd frontend`
+1. `npm i`
+1. `npm run start` will start the server on port 3000
 
 #### Reference Links
 
