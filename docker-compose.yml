@@ -10,6 +10,13 @@ services:
     build:
       dockerfile: Dockerfile
       context: "./backend"
+    develop:
+      watch: 
+        - action: sync
+          path: ./backend
+          target: /usr/src/app
+          ignore:
+            - node_modules/
 
   db:
     container_name: db-container
@@ -34,3 +41,10 @@ services:
     depends_on:
       - backend
       - db
+    develop:
+      watch: 
+        - action: sync
+          path: ./frontend
+          target: /usr/src/app
+          ignore:
+            - node_modules/

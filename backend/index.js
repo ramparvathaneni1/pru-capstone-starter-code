@@ -25,7 +25,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Back end is running")
+  res.send("Backend is running!!")
 });
 
 app.get("/api/capstone", (req, res) => {
@@ -37,7 +37,7 @@ app.get("/api/capstone", (req, res) => {
   });
 });
 
-app.listen("3001", () => { });
-// const server = app.listen("3001", () => { });
+// app.listen("3001", () => { });
+const server = app.listen("3001", () => { });
 
-// module.exports = { app, server };
+module.exports = { app, server };
