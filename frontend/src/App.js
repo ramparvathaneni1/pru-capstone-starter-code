@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from 'react';
 
 function App() {
 
   async function fetchData() {
-    let response = await fetch('http://localhost:3001/')
+    let response = await fetch('http://localhost:3001/api/capstone')
     response = await response.json()
     console.log(response) 
   }
@@ -16,18 +15,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Pru Capstone Starter App
+          (Check the Console)
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
