@@ -116,3 +116,5 @@ const pool = new Pool({
 ```
 
 1. `sudo docker-compose up -d --build`
+
+[Docker Compose Watch](https://docs.docker.com/compose/file-watch/)

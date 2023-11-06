@@ -1,10 +1,12 @@
 import './App.css';
 import {useState, useEffect} from 'react';
 
+const backendApiUrl = 'http://localhost:3001'
+
 function App() {
 
   async function fetchData() {
-    let response = await fetch('http://localhost:3001/api/capstone')
+    let response = await fetch(`${backendApiUrl}/api/capstone`)
     response = await response.json()
     console.log(response) 
   }
