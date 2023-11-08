@@ -13,8 +13,5 @@ CREATE TABLE capstone (
 END
 GO 
 BEGIN
-
 INSERT INTO capstone (first_name, last_name) VALUES ('Marc', 'Wright'), ('Ben', 'Piper'), ('Troy', 'Swayzee');
-
-
 END
