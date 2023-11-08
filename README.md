@@ -2,18 +2,20 @@
 
 ## Project Deliverables
 
-[Link to Requirements](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023/blob/main/Capstone%20Project%20Guidelines.pdf)
+[Link to Capstone Requirements PDF](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023/blob/main/Capstone%20Project%20Guidelines.pdf)
 
 Please fork and clone this repo.
 
 #### Requirements
 
-You will be expected to develop a full-stack application that leverages all the technologies covered in the course. All deliverables will be submitted to your GitHub repository on GA’s GitHub Enterprise servers. You will submit:
+You will be expected to develop a new full-stack application that leverages all the technologies covered in the course. All deliverables will be submitted to your GitHub repository on GA’s GitHub Enterprise servers. You will submit:
 
-- Code for a functioning API and react front-end that meet the requirements detailed on the following page
-- A Dockerfile that can be used to create a functioning container image of the application, including its API code, dependencies, and necessary configurations
+- Code for a functioning API and react front-end that meet the requirements detailed below
+- 3 Dockerfiles that can be used to create a functioning container image of the application, including its API code, dependencies, and necessary configurations
 
 #### Specific Requirements:
+
+[The project rubric can be found in the Capstone Requirements PDF Doc here](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023)
 
 1. Data Model:
    - Implement and use a PostgreSQL database for storage
@@ -23,12 +25,16 @@ You will be expected to develop a full-stack application that leverages all the 
 1. React User Interface:
    - CRUD operations are accessible to a user from a React front-end
    - _Styling will not be part of the evaluation_
+   - _React Router does not need to be included_
 1. Testing:
-   - Unit tests on react components and express routes
-   - End-to-End browser testing with Selenium
+
+   - 3 Jest Unit tests on the React app
+   - 3 Jest Unit tests on the Express app
+   - 1 End-to-End browser test with Selenium
+
 1. Containerization:
-   - Create a `Dockerfile` to containerize your application
-   - Build an image from the `Dockerfile`
+   - Create 3 Dockerfiles (backend, db, frontend) to containerize your application
+   - Build 3 images and run 3 containers from the `Dockerfile`
 
 <br>
 
@@ -63,17 +69,7 @@ These npm packages are pre-installed:
 
   _Note - If you're asked, the default password for the `postgres` user is `postgres`_
 
-- In `index.js`, the `pool` variable should like like this:
-
-   ```js
-   const pool = new Pool({
-   user: "postgres",
-   host: "localhost",
-   database: "capstone_db",
-   password: "postgres",
-   port: 5432,
-   });
-   ```
+- Note- In `index.js`, you have 2 `pool` variables: one for local development and one when you build your backend `Dockefile`.
 
 <br>
 
@@ -99,22 +95,48 @@ These npm packages are pre-installed:
 
 <br>
 
-## Docker Compose
+## Presentations
 
-1. Make sure your postgresql service is stopped: `sudo service postgresql stop`
+Presentations will start on Friday November 17th at 9am EST on a volunteers first basis. Everyone will be asked to share their screen and demo their app. We ask that you demo the following:
 
-1. To use Docker Compose, in `backend/index.js`, update the pool variable:
+- Demo that you can Create, Read, Update and Delete on a resource.
+- What are the biggest challenges and biggest wins from your capstone app?
 
-```js
-const pool = new Pool({
-  user: "postgres",
-  host: "db",
-  database: "capstone_db",
-  password: "docker",
-  port: 5432,
-});
-```
+<br>
 
-1. `sudo docker-compose up -d --build`
+## Squads
 
-[Docker Compose Watch](https://docs.docker.com/compose/file-watch/)
+We will check in as squads (in breakouts) at 9am EST and 1:30pm EST each day for a standup.
+
+#### Ben
+
+- Alan Johnson
+- Jimili Jacob
+- Taha Guler
+- Becky Foley
+- Joshua Suzuki
+- Eric Mauro
+- Dilshan Meringage
+- Sunitha Raghurajan
+
+#### Troy
+
+- Chiragkumar Patel
+- Vladimir Temelkoski
+- Julian Garcia-Sanabria
+- Fredrik Eriksson
+- Daniel Ingersoll
+- David Nothnagel
+- Swati Kadakia
+
+#### Marc
+
+- Chun Xu
+- Ozgur Ozcan
+- Qiyu "Charles" Chen
+- Lawrence Mabin
+- Priyanshi Choudhary
+- Pujitha Kongara
+- Michael Neilson
+
+<br>
