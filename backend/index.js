@@ -7,9 +7,18 @@ const pool = new Pool({
   user: "postgres",
   host: "localhost", // MAKE SURE YOU CHANGE THE HOST FOR YOUR DOCKER IMAGE
   database: "capstone_db",
-  password: "postgres",
+  password: "postgres", // FOR DOCKER - CHANGE THIS TO DOCKER
   port: 5432,
 });
+
+// TO BUILD YOUR DOCKER IMAGE, USE THIS POOL VARIABLE INSTEAD
+// const pool = new Pool({
+//   user: "postgres",
+//   host: "db-container", // WE'VE CHANGED THE HOST NAME
+//   database: "capstone_db",
+//   password: "docker", // CHANGED PASSWORD TO DOCKER
+//   port: 5432,
+// });
 
 const app = express();
 app.use(cors());
@@ -28,7 +37,6 @@ app.get("/api/capstone", (req, res) => {
   });
 });
 
-// app.listen("3001", () => { });
 const server = app.listen("3001", () => {});
 
 module.exports = { app, server };
