@@ -4,7 +4,11 @@
 
 [Link to Capstone Requirements PDF](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023/blob/main/Capstone%20Project%20Guidelines.pdf)
 
-Please fork and clone this repo.
+Please fork and clone this repo. To submit your work, please submit a Pull Request with your full name on this repo.
+
+[Pull Request Instructions](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023#submitting-your-work-via-pull-request)
+
+_Note: the use of this starter code is optional! Feel free to build your own apps from scratch as you see fit. Please give the instructors a heads up and we'll have you submit your repo links differently._
 
 #### Requirements
 
@@ -12,6 +16,8 @@ You will be expected to develop a new full-stack application that leverages all 
 
 - Code for a functioning API and react front-end that meet the requirements detailed below
 - 3 Dockerfiles that can be used to create a functioning container image of the application, including its API code, dependencies, and necessary configurations
+
+_Prudential has strongly recommended that you build an application with a financial theme (e.g. - budget tracker app, or bill tracker app, etc)_
 
 #### Specific Requirements:
 
@@ -34,7 +40,6 @@ You will be expected to develop a new full-stack application that leverages all 
 
 1. Containerization:
    - Create 3 Dockerfiles (backend, db, frontend) to containerize your application
-   - Build 3 images and run 3 containers from the `Dockerfile`
 
 <br>
 
@@ -97,16 +102,24 @@ These npm packages are pre-installed:
 
 ## Presentations
 
-Presentations will start on Friday November 17th at 9am EST on a volunteers first basis. Everyone will be asked to share their screen and demo their app. We ask that you demo the following:
+Presentations will start on Friday November 17th at 9am EST on a volunteers first basis. Everyone will be asked to share their screen and demo their app. Each person will have 5-6 minutes including Q&A.
+
+We ask that you demo the following:
 
 - Demo that you can Create, Read, Update and Delete on a resource.
 - What are the biggest challenges and biggest wins from your capstone app?
+
+_NOTE: In the interest of time, you are not required to demo your Docker containers. You are welcome to demo using your locally running servers._
 
 <br>
 
 ## Squads
 
-We will check in as squads (in breakouts) at 9am EST and 1:30pm EST each day for a standup.
+We will check in as squads (in breakouts) at 9am EST for a standup. Here you can address what you've completed so far, what you plan to work on that day and any roadblocks.
+
+We will also have a 1:30pm EST check in after lunch in the Zoom chat each day.
+
+We've assigned everyone to an instructor so that we get more familiar with individual apps and better provide assistance.
 
 #### Ben
 
@@ -114,10 +127,9 @@ We will check in as squads (in breakouts) at 9am EST and 1:30pm EST each day for
 - Jimili Jacob
 - Taha Guler
 - Becky Foley
-- Joshua Suzuki
 - Eric Mauro
 - Dilshan Meringage
-- Sunitha Raghurajan
+- Chun Xu
 
 #### Troy
 
@@ -131,12 +143,13 @@ We will check in as squads (in breakouts) at 9am EST and 1:30pm EST each day for
 
 #### Marc
 
-- Chun Xu
 - Ozgur Ozcan
-- Qiyu "Charles" Chen
+- Charles Chen
 - Lawrence Mabin
 - Priyanshi Choudhary
 - Pujitha Kongara
 - Michael Neilson
+- Joshua Suzuki
+- Sunitha Raghurajan
 
 <br>
