@@ -115,11 +115,16 @@ _NOTE: In the interest of time, you are not required to demo your Docker contain
 
 ## Squads
 
-We will check in as squads (in breakouts) at 9am EST for a standup. Here you can address what you've completed so far, what you plan to work on that day and any roadblocks.
+We've assigned everyone to an instructor so that we get more familiar with individual apps and better provide assistance. Here is when we'll check in.
 
-We will also have a 1:30pm EST check in after lunch in the Zoom chat each day.
+1. We will check in as squads (in breakouts) at 9am EST for a standup. Here you can address what you've completed so far, what you plan to work on that day and any roadblocks.
 
-We've assigned everyone to an instructor so that we get more familiar with individual apps and better provide assistance.
+1. We will also have a 1:30pm EST check in after lunch in the Zoom chat each day for attendance.
+
+1. We'll send out the daily exit ticket at 3:30pm EST.
+
+
+### Squad Assignments
 
 #### Ben
 
