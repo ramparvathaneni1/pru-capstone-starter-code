@@ -2,7 +2,7 @@
 
 ## Project Deliverables
 
-[Link to Capstone Requirements PDF](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023/blob/main/Capstone%20Project%20Guidelines.pdf)
+[Link to Capstone Requirements PDF](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023/blob/main/Capstone-Project-Guidelines.pdf)
 
 Please fork and clone this repo. To submit your work, please submit a Pull Request with your full name on this repo.
 
@@ -21,7 +21,7 @@ _Prudential has strongly recommended that you build an application with a financ
 
 #### Specific Requirements:
 
-[The project rubric can be found in the Capstone Requirements PDF Doc here](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023)
+[The project rubric can be found in the Capstone Requirements PDF Doc here](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023/blob/main/Capstone-Project-Guidelines.pdf)
 
 1. Data Model:
    - Implement and use a PostgreSQL database for storage
