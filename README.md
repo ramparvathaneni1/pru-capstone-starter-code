@@ -69,8 +69,8 @@ These npm packages are pre-installed:
 
 ## `backend/db`
 
-- Use the `backend/db/data.sql` file to create the schema in your database.
-- Run the `db/data.sql` file to create the database, table and data: `psql -U postgres -d name_of_your_app_db < db/capstone.sql`
+- Use the `backend/db/capstone.sql` file to create the schema in your database.
+- Run the `db/capstone.sql` file to create the database, table and data: `psql -U postgres -d name_of_your_app_db < db/capstone.sql`
 
   _Note - If you're asked, the default password for the `postgres` user is `postgres`_
 
