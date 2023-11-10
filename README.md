@@ -2,6 +2,8 @@
 
 ## Project Deliverables
 
+**Project is due via Pull Request on Friday, November 17th at 9am EST**
+
 [Link to Capstone Requirements PDF](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023/blob/main/Capstone-Project-Guidelines.pdf)
 
 Please fork and clone this repo. To submit your work, please submit a Pull Request with your full name on this repo.
@@ -108,6 +110,7 @@ We ask that you demo the following:
 
 - Demo that you can Create, Read, Update and Delete on a resource.
 - What are the biggest challenges and biggest wins from your capstone app?
+- Feel free to run one of your test suites for frontend or backend.
 
 _NOTE: In the interest of time, you are not required to demo your Docker containers. You are welcome to demo using your locally running servers._
 
