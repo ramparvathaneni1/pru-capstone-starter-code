@@ -120,14 +120,14 @@ _NOTE: In the interest of time, you are not required to demo your Docker contain
 
 We've assigned everyone to an instructor so that we get more familiar with individual apps and better provide assistance. Here is when we'll check in.
 
-1. We will check in as squads (in breakouts) at 9am EST for a standup. Here you can address:
+1. We will check into the main room at 9am EST for attendance. Afterward, we'll split up into squads (in breakouts) for a standup. Here you can address:
    - What you've completed so far? 
    - What you plan to work on that day?
    - Any blockers?
 
 1. We will also have a 1:30pm EST check in after lunch in the Zoom chat each day for attendance.
 
-1. We'll have a final "stand down" at 4:30pm EST each day. Here you can address: 
+1. We'll have a final "stand down" at 4:30pm EST each day, after which you're dismissed. Here you can address: 
    - What did you accomplish today?
    - Did you hit any blockers?
    - What’s your plan for tomorrow?
