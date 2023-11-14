@@ -127,7 +127,7 @@ We've assigned everyone to an instructor so that we get more familiar with indiv
 
 1. We will also have a 1:30pm EST check in after lunch in the Zoom chat each day for attendance.
 
-1. We'll have a final "stand down" at 4:30pm EST each day, after which you're dismissed. Here you can address: 
+1. We'll meet in the main room at 4:30pm EST each day for the daily exit ticket. For question "10. Any other general questions or comments to share?", please briefly let us know the following:
    - What did you accomplish today?
    - Did you hit any blockers?
    - What’s your plan for tomorrow?
