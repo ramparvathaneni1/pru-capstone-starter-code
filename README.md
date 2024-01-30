@@ -2,13 +2,13 @@
 
 ## Project Deliverables
 
-**Project is due via Pull Request on Friday, November 17th at 9am EST**
+**Project is due via Pull Request on Tuesday, February 6th at 9am EST**
 
-[Link to Capstone Requirements PDF](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023/blob/main/Capstone-Project-Guidelines.pdf)
+[Link to Capstone Requirements PDF](./assets/Capstone-Project-Guidelines.pdf)
 
 Please fork and clone this repo. To submit your work, please submit a Pull Request with your full name on this repo.
 
-[Pull Request Instructions](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023#submitting-your-work-via-pull-request)
+[Pull Request Instructions](https://git.generalassemb.ly/ModernEngineering/start-here/#submitting-your-work-via-pull-request)
 
 _Note: the use of this starter code is optional! Feel free to build your own apps from scratch as you see fit. Please give the instructors a heads up and we'll have you submit your repo links differently._
 
@@ -23,7 +23,7 @@ _Prudential has strongly recommended that you build an application with a financ
 
 #### Specific Requirements:
 
-[The project rubric can be found in the Capstone Requirements PDF Doc here](https://git.generalassemb.ly/ModernEngineering/getting-started-cohort-4-october-2023/blob/main/Capstone-Project-Guidelines.pdf)
+[The project rubric can be found in the Capstone Requirements PDF Doc here](./assets/Capstone-Project-Guidelines.pdf)
 
 1. Data Model:
    - Implement and use a PostgreSQL database for storage
@@ -58,7 +58,7 @@ These npm packages are pre-installed:
 #### Reference Links
 
 - [Express Todo Api Lesson](https://git.generalassemb.ly/ModernEngineering/express-to-do-api)
-- [Testing Express With Supertest](https://git.generalassemb.ly/ModernEngineering/testing-express-with-supertest)
+- [Testing Express With Supertest](https://git.generalassemb.ly/ModernEngineering/todo-express-api-testing-with-supertest)
 - [Dockerize Todo App](https://git.generalassemb.ly/ModernEngineering/dockerize-to-do-app)
 
 #### Getting Started
@@ -104,7 +104,7 @@ These npm packages are pre-installed:
 
 ## Presentations
 
-Presentations will start on Friday November 17th at 9am EST on a volunteers first basis. Everyone will be asked to share their screen and demo their app. Each person will have 5-6 minutes including Q&A.
+Presentations will start on Tuesday February 6th at 9am EST on a volunteers first basis. Everyone will be asked to share their screen and demo their app. Each person will have 5-6 minutes including Q&A.
 
 We ask that you demo the following:
 
@@ -135,35 +135,34 @@ We've assigned everyone to an instructor so that we get more familiar with indiv
 
 ### Squad Assignments
 
-#### Ben
-
-- Alan Johnson
-- Jimili Jacob
-- Taha Guler
-- Becky Foley
-- Eric Mauro
-- Dilshan Meringage
-- Chun Xu
+#### Mario
+- Lauren
+- Mauricio
+- Shivakumar
+- Marisa
+- Parag
+- Christopher M
+- Duane
+- Katherine
 
 #### Troy
+- Christopher L
+- Michael
+- Mark
+- Zachary
+- Jyothi
+- Mridula
+- Himaja
+- Haseeb
 
-- Chiragkumar Patel
-- Vladimir Temelkoski
-- Julian Garcia-Sanabria
-- Fredrik Eriksson
-- Daniel Ingersoll
-- David Nothnagel
-- Swati Kadakia
-
-#### Marc
-
-- Ozgur Ozcan
-- Charles Chen
-- Lawrence Mabin
-- Priyanshi Choudhary
-- Pujitha Kongara
-- Michael Neilson
-- Joshua Suzuki
-- Sunitha Raghurajan
+#### Suresh
+- Mohamed
+- Igor
+- Alan
+- Tyler
+- Bhanu
+- Descientia
+- Samuel
+- Velayutha
 
 <br>
