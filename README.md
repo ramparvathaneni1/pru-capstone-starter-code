@@ -37,8 +37,10 @@ _Prudential has strongly recommended that you build an application with a financ
 1. Testing:
 
    - 3 Jest Unit tests on the React app
-   - 3 Jest Unit tests on the Express app (Reach Out To Instructor's Before Proceeding To Containerization To Show Passing Tests)
+   - 3 Jest Unit tests on the Express app
    - 1 End-to-End browser test with Selenium
+
+**Note: (Reach Out To Instructor's Before Proceeding To Containerization To Show Passing Tests)**
 
 1. Containerization:
    - Create 3 Dockerfiles (backend, db, frontend) to containerize your application
