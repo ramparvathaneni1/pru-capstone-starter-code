@@ -2,7 +2,7 @@
 
 ## Project Deliverables
 
-**Project is due via Pull Request on Tuesday, February 6th at 9am EST**
+**Project is due via Pull Request on Friday, March 22nd at 9am EST**
 
 [Link to Capstone Requirements PDF](./assets/Capstone-Project-Guidelines.pdf)
 
@@ -136,33 +136,30 @@ We've assigned everyone to an instructor so that we get more familiar with indiv
 ### Squad Assignments
 
 #### Mario
-- Lauren
-- Mauricio
-- Shivakumar
-- Marisa
-- Parag
-- Christopher M
-- Duane
-- Katherine
+- Jyothi
+- Durga
+- Jorge
+- Raghunadh
+- Naresh
+- Victorino
+- Anila
 
 #### Troy
-- Christopher L
-- Michael
-- Mark
-- Zachary
-- Jyothi
-- Mridula
-- Himaja
-- Haseeb
+- Marina
+- Mohammed
+- Uma
+- Daniel
+- Megha
+- Calvin
+- Matt
 
 #### Suresh
-- Mohamed
-- Igor
-- Alan
-- Tyler
-- Bhanu
-- Descientia
-- Samuel
-- Velayutha
+- Leonid
+- Rohan
+- Yelena
+- Romer
+- Lindsay
+- Khue
+- Joe
 
 <br>
