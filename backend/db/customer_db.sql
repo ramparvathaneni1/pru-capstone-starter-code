@@ -81,26 +81,26 @@ VALUES ('GI', 'PRU', 'GI001', '1990-01-02', '1990-01-01', NULL, 1),
     ('GI', 'UMB', 'GI102', '1960-03-01', '1960-03-01', NULL, 3);
 
 
-INSERT INTO customer_address (id, universal_id, type, addr_line_1, addr_line_2, city, state, zip, privacy_code) 
-VALUES (1, 1, 'HOME', '57058 Homewood Way', 'Apt 1277', 'Brockton', 'Massachusetts', '02405', 1),
-    (2, 1, 'BUSINESS', '43662 Corscot Park', 'Apt 160', 'Birmingham', 'Alabama', '35254', 3),
-    (3, 2, 'HOME', '0 Village Green Parkway', '8th Floor', 'Baton Rouge', 'Louisiana', '70836', 2),
-    (4, 2, 'BUSINESS', '275 Johnson Place', '12th Floor', 'Albuquerque', 'New Mexico', '87190', 3),
-    (5, 3, 'BUSINESS', '29 Granby Road', 'Suite 52', 'Little Rock', 'Arkansas', '72231', 1);
+INSERT INTO customer_address (universal_id, type, addr_line_1, addr_line_2, city, state, zip, privacy_code) 
+VALUES (1, 'HOME', '57058 Homewood Way', 'Apt 1277', 'Brockton', 'Massachusetts', '02405', 1),
+    (1, 'BUSINESS', '43662 Corscot Park', 'Apt 160', 'Birmingham', 'Alabama', '35254', 3),
+    (2, 'HOME', '0 Village Green Parkway', '8th Floor', 'Baton Rouge', 'Louisiana', '70836', 2),
+    (2, 'BUSINESS', '275 Johnson Place', '12th Floor', 'Albuquerque', 'New Mexico', '87190', 3),
+    (3, 'BUSINESS', '29 Granby Road', 'Suite 52', 'Little Rock', 'Arkansas', '72231', 1);
 
-INSERT INTO customer_phone (id, universal_id, type, phone_num, phone_ext, privacy_code) 
-VALUES (1, 1, 'HOME', 5754121760, NULL, 1),
-    (2, 1, 'BUSINESS', 6336927470, 410, 3),
-    (3, 2, 'HOME', 5735678522, NULL, 2),
-    (4, 2, 'BUSINESS', 6623261796, 21,  3),
-    (5, 3, 'BUSINESS', 7731019900, NULL, 1);
+INSERT INTO customer_phone (universal_id, type, phone_num, phone_ext, privacy_code) 
+VALUES (1, 'HOME', 5754121760, NULL, 1),
+    (1, 'BUSINESS', 6336927470, 410, 3),
+    (2, 'HOME', 5735678522, NULL, 2),
+    (2, 'BUSINESS', 6623261796, 21,  3),
+    (3, 'BUSINESS', 7731019900, NULL, 1);
 
-INSERT INTO customer_email (id, universal_id, type, email, privacy_code) 
-VALUES (1, 1, 'HOME', 'john.doe@email.com', 1),
-    (2, 1, 'BUSINESS', 'john.doe@pru.com', 3),
-    (3, 2, 'HOME', 'jane.doe@email.com', 2),
-    (4, 2, 'BUSINESS', 'jane.doe@pru.com',  3),
-    (5, 3, 'BUSINESS', 'contact@umbrellacorp.com', 1);
+INSERT INTO customer_email (universal_id, type, email, privacy_code) 
+VALUES (1, 'HOME', 'john.doe@email.com', 1),
+    (1, 'BUSINESS', 'john.doe@pru.com', 3),
+    (2, 'HOME', 'jane.doe@email.com', 2),
+    (2, 'BUSINESS', 'jane.doe@pru.com',  3),
+    (3, 'BUSINESS', 'contact@umbrellacorp.com', 1);
 
 -- Add Customer's Universal ID as Foreign Key to Contract Table
 ALTER TABLE contract 
