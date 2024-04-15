@@ -1,5 +1,8 @@
 -- Get All Customers
-SELECT universal_id, cis_id, first_name, middle_name, last_name, is_org, org_name, dob  FROM customer WHERE is_active = true;
+SELECT universal_id, cis_id, first_name, middle_name, last_name, is_org, org_name, dob
+FROM customer
+WHERE is_active = true
+ORDER BY universal_id ASC;
 
 -- Get Customer Details with Address, Phone, Email and Customer Preferences
 SELECT c.universal_id, c.cis_id,
@@ -13,8 +16,9 @@ FROM customer c
 INNER JOIN customer_address a ON a.universal_id=c.universal_id
 INNER JOIN customer_phone p ON p.universal_id=c.universal_id
 INNER JOIN customer_email e ON e.universal_id=c.universal_id
-WHERE c.universal_id=1 AND c.is_active=true
-GROUP BY c.universal_id, a.id, p.id, e.id;
+WHERE c.universal_id=$1 AND c.is_active=true
+GROUP BY c.universal_id, a.id, p.id, e.id
+ORDER BY c.universal_id ASC;
 
 -- Get Customer Contract Details
 SELECT c.universal_id, c.cis_id,
@@ -23,8 +27,27 @@ SELECT c.universal_id, c.cis_id,
     con.issue_date, con.effective_date, con.termination_date
 FROM customer c
 INNER JOIN contract con ON con.universal_id=c.universal_id
-WHERE c.universal_id=1 AND c.is_active=true AND con.is_active=true
-GROUP BY c.universal_id, con.contract_num;
+WHERE c.universal_id=$1 AND c.is_active=true AND con.is_active=true
+GROUP BY c.universal_id, con.contract_num
+ORDER BY c.universal_id ASC;
+
+-- Get All Addresses By Customer
+SELECT id, universal_id, type, addr_line_1, addr_line_1, city, state, zip, privacy_code
+FROM customer_address
+WHERE universal_id = $1
+ORDER BY universal_id ASC;
+
+-- Get All Phones By Customer
+SELECT id, universal_id, type, phone_num, phone_ext, privacy_code
+FROM customer_phone
+WHERE universal_id = $1
+ORDER BY universal_id ASC;
+
+-- Get All Emails By Customer
+SELECT id, universal_id, type, email, privacy_code
+FROM customer_email
+WHERE universal_id = $1
+ORDER BY universal_id ASC;
 
 -- UPDATE Customer
 UPDATE customer SET 
