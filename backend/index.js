@@ -40,6 +40,31 @@ app.get("/", (req, res) => {
   res.send("Customer API running!");
 });
 
+// CREATE Customer
+app.post("/api/customer", async (req, res) =>
+  createHandlers.createCustomer(req, res)
+);
+
+// CREATE Contract
+app.post("/api/contract", async (req, res) =>
+  createHandlers.createContract(req, res)
+);
+
+// CREATE Address
+app.post("/api/address", async (req, res) =>
+  createHandlers.createAddress(req, res)
+);
+
+// CREATE Phone
+app.post("/api/phone", async (req, res) =>
+  createHandlers.createPhone(req, res)
+);
+
+// CREATE Email
+app.post("/api/email", async (req, res) =>
+  createHandlers.createEmail(req, res)
+);
+
 // GET All Customers
 app.get("/api/customer", async (req, res) =>
   getHandlers.getAllCustomers(req, res)
@@ -101,19 +126,29 @@ app.put("/api/email/:id", async (req, res) =>
 );
 
 // DEACTIVATE Customer by ID
-app.delete("/api/customer/:id", async (req, res) => deleteHandlers.deactivateCustomerById(req, res));
+app.delete("/api/customer/:id", async (req, res) =>
+  deleteHandlers.deactivateCustomerById(req, res)
+);
 
 // DEACTIVATE Contract by Contract Number
-app.delete("/api/contract/:id", async (req, res) => deleteHandlers.deactivateContractByContractNum(req, res));
+app.delete("/api/contract/:id", async (req, res) =>
+  deleteHandlers.deactivateContractByContractNum(req, res)
+);
 
 // DELETE Address by ID
-app.delete("/api/address/:id", async (req, res) => deleteHandlers.deleteAddressById(req, res));
+app.delete("/api/address/:id", async (req, res) =>
+  deleteHandlers.deleteAddressById(req, res)
+);
 
 // DELETE Phone by ID
-app.delete("/api/phone/:id", async (req, res) => deleteHandlers.deletePhoneById(req, res));
+app.delete("/api/phone/:id", async (req, res) =>
+  deleteHandlers.deletePhoneById(req, res)
+);
 
 // DELETE Email by ID
-app.delete("/api/email/:id", async (req, res) => deleteHandlers.deleteEmailById(req, res));
+app.delete("/api/email/:id", async (req, res) =>
+  deleteHandlers.deleteEmailById(req, res)
+);
 
 const server = app.listen("3001", () => {});
 

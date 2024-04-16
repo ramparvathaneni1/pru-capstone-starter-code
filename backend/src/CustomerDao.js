@@ -7,24 +7,24 @@ module.exports = function CustomerDao(pool) {
     cis_id, first_name, last_name, middle_name, org_name, 
     gender, marital_status, dob, is_org, 
     pref_address_type, pref_phone_type, pref_email_type, pref_language)
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`;
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *`;
 
   const CREATE_CONTRACT = `INSERT INTO contract(
     line_of_business_code, company_code, product_code, effective_date,
     issue_date, termination_date, universal_id)
-  VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+  VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
 
   const CREATE_ADDRESS = `INSERT INTO customer_address(
     universal_id, type, addr_line_1, addr_line_2, city, state, zip, privacy_code) 
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
 
   const CREATE_PHONE = `INSERT INTO customer_phone(
     universal_id, type, phone_num, phone_ext, privacy_code) 
-  VALUES ($1, $2, $3, $4, $5)`;
+  VALUES ($1, $2, $3, $4, $5) RETURNING *`;
 
   const CREATE_EMAIL = `INSERT INTO customer_email(
     universal_id, type, email, privacy_code) 
-  VALUES ($1, $2, $3, $4)`;
+  VALUES ($1, $2, $3, $4) RETURNING *`;
 
   // GET Queries
   const GET_ALL_CUSTOMERS = `SELECT universal_id, cis_id, first_name, middle_name, last_name, is_org, org_name, dob
@@ -138,6 +138,26 @@ module.exports = function CustomerDao(pool) {
 
   const DELETE_EMAIL_BY_ID = `DELETE FROM customer_email WHERE id = $1`;
 
+  this.createCustomer = async (params) => {
+    return await this.getDataFromDB(CREATE_CUSTOMER, params);
+  }
+
+  this.createContract = async (params) => {
+    return await this.getDataFromDB(CREATE_CONTRACT, params);
+  }
+
+  this.createAddress = async (params) => {
+    return await this.getDataFromDB(CREATE_ADDRESS, params);
+  }
+
+  this.createPhone = async (params) => {
+    return await this.getDataFromDB(CREATE_PHONE, params);
+  }
+
+  this.createEmail = async (params) => {
+    return await this.getDataFromDB(CREATE_EMAIL, params);
+  }
+
   this.getAllCustomers = async () => {
     return await this.getDataFromDB(GET_ALL_CUSTOMERS, []);
   };
@@ -232,7 +252,6 @@ module.exports = function CustomerDao(pool) {
     let error = null;
     try {
       const result = await this.pool.query(query, params);
-      console.log("DAO result = ", result);
       return { data: result.rows, error, rowCount: result.rowCount };
     } catch (error) {
       console.error(error);
