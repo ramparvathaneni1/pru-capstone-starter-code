@@ -2,6 +2,30 @@
 module.exports = function CustomerDao(pool) {
   this.pool = pool;
 
+  // CREATE Queries
+  const CREATE_CUSTOMER = `INSERT INTO customer(
+    cis_id, first_name, last_name, middle_name, org_name, 
+    gender, marital_status, dob, is_org, 
+    pref_address_type, pref_phone_type, pref_email_type, pref_language)
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`;
+
+  const CREATE_CONTRACT = `INSERT INTO contract(
+    line_of_business_code, company_code, product_code, effective_date,
+    issue_date, termination_date, universal_id)
+  VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+
+  const CREATE_ADDRESS = `INSERT INTO customer_address(
+    universal_id, type, addr_line_1, addr_line_2, city, state, zip, privacy_code) 
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
+
+  const CREATE_PHONE = `INSERT INTO customer_phone(
+    universal_id, type, phone_num, phone_ext, privacy_code) 
+  VALUES ($1, $2, $3, $4, $5)`;
+
+  const CREATE_EMAIL = `INSERT INTO customer_email(
+    universal_id, type, email, privacy_code) 
+  VALUES ($1, $2, $3, $4)`;
+
   // GET Queries
   const GET_ALL_CUSTOMERS = `SELECT universal_id, cis_id, first_name, middle_name, last_name, is_org, org_name, dob
     FROM customer
@@ -47,8 +71,6 @@ module.exports = function CustomerDao(pool) {
     FROM customer_email
     WHERE universal_id = $1
     ORDER BY id ASC`;
-
-  // CREATE Queries
 
   // UPDATE Queries
   const UPDATE_CUSTOMER_BY_ID = `UPDATE customer SET 
