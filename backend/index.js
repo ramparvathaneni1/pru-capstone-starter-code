@@ -5,6 +5,7 @@ const CustomerDao = require("./src/CustomerDao.js");
 const GetRequestHandler = require("./src/GetRequestHandler.js");
 const UpdateRequestHandler = require("./src/UpdateRequestHandler.js");
 const DeleteRequestHandler = require("./src/DeleteRequestHandler.js");
+const CreateRequestHandler = require("./src/CreateRequestHandler.js");
 
 // TO RUN YOUR SERVER LOCALLY, USE THIS POOL VARIABLE
 const pool = new Pool({
@@ -29,6 +30,7 @@ const dao = new CustomerDao(pool);
 const getHandlers = new GetRequestHandler(dao);
 const updateHandlers = new UpdateRequestHandler(dao);
 const deleteHandlers = new DeleteRequestHandler(dao);
+const createHandlers = new CreateRequestHandler(dao);
 
 const app = express();
 app.use(cors());
