@@ -35,7 +35,7 @@ module.exports = function (dao) {
     // Handle Customer Not Found
     if (customerResults.data && customerResults.data.length <= 0) {
       res.status(404).json({
-        message: `Customer with ID ${universalId} Not Found.`,
+        message: `Active Customer with ID ${universalId} Not Found.`,
       });
       return;
     }
@@ -214,7 +214,7 @@ module.exports = function (dao) {
     // Handle Contracts Not Found
     if (contractResults.data && contractResults.data.length <= 0) {
       res.status(404).json({
-        message: `Contracts for Customer ID ${universalId} Not Found.`,
+        message: `Active Contracts for Customer ID ${universalId} Not Found.`,
       });
       return;
     }

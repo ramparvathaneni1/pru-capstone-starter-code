@@ -1,0 +1,520 @@
+{
+	"info": {
+		"_postman_id": "2e1d049e-7bb8-4753-84cf-a6940ec5cc8e",
+		"name": "MEF Ram P - Pru Customer API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33932066"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cis_id\": \"TEST_123\",\n    \"first_name\": \"Test\",\n    \"last_name\": \"Person\",\n    \"middle_name\": \"M\",\n    \"org_name\": \"\",\n    \"gender\": \"M\",\n    \"marital_status\": \"Married\",\n    \"dob\": \"1990-01-01\",\n    \"is_org\": false,\n    \"pref_address_type\": \"HOME\",\n    \"pref_phone_type\": \"HOME\",\n    \"pref_email_type\": \"HOME\",\n    \"pref_language\": \"ENGLISH\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Contract",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"line_of_business_code\": \"LOB\",\n    \"company_code\": \"COMP\",\n    \"product_code\": \"PROD\",\n    \"effective_date\": \"1990-01-01\",\n    \"issue_date\": \"1990-01-01\",\n    \"termination_date\": null,\n    \"universal_id\": {{universalId}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"contract"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Address",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"addr_line_1\": \"123 Wash St\",\n    \"addr_line_2\": \"\",\n    \"city\": \"Newark\",\n    \"state\": \"NJ\",\n    \"zip\": 12345,\n    \"privacy_code\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Phone",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"phone_num\": 1234567890,\n    \"phone_ext\": 999,\n    \"privacy_code\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/phone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"phone"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"email\": \"test@pru.com\",\n    \"privacy_code\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Active Customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Customer By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/customer/{{universalId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"customer",
+						"{{universalId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Contract By Customer ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/customer/{{universalId}}/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"customer",
+						"{{universalId}}",
+						"contract"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cis_id\": \"TEST_1234\",\n    \"first_name\": \"Test2\",\n    \"last_name\": \"Person1\",\n    \"middle_name\": \"M\",\n    \"org_name\": \"\",\n    \"gender\": \"M\",\n    \"marital_status\": \"Married\",\n    \"dob\": \"1990-01-01\",\n    \"is_org\": false,\n    \"pref_address_type\": \"HOME\",\n    \"pref_phone_type\": \"HOME\",\n    \"pref_email_type\": \"HOME\",\n    \"pref_language\": \"ENGLISH\",\n    \"is_active\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/customer/{{universalId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"customer",
+						"{{universalId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Contract",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"line_of_business_code\": \"LOB1\",\n    \"company_code\": \"COMP2\",\n    \"product_code\": \"PROD3\",\n    \"effective_date\": \"1990-01-01\",\n    \"issue_date\": \"1990-01-01\",\n    \"termination_date\": null,\n    \"universal_id\": {{universalId}},\n    \"is_active\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/contract/{{contractNum}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"contract",
+						"{{contractNum}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Address",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"BUSINESS\",\n    \"addr_line_1\": \"321 Wash St\",\n    \"addr_line_2\": \"\",\n    \"city\": \"Newark\",\n    \"state\": \"NJ\",\n    \"zip\": 12345,\n    \"privacy_code\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/address/{{addressId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"address",
+						"{{addressId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Phone",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"phone_num\": 9876543210,\n    \"phone_ext\": 100,\n    \"privacy_code\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/phone/{{phoneId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"phone",
+						"{{phoneId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"BUSINESS\",\n    \"email\": \"test2@pru.com\",\n    \"privacy_code\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/email/{{emailId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"email",
+						"{{emailId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deactivate Customer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/customer/{{universalId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"customer",
+						"{{universalId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deactivate Contract",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/contract/{{contractNum}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"contract",
+						"{{contractNum}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Address",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/address/{{addressId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"address",
+						"{{addressId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Phone",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/phone/{{phoneId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"phone",
+						"{{phoneId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Email",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/email/{{emailId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"email",
+						"{{emailId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "universalId",
+			"value": "4",
+			"type": "string"
+		},
+		{
+			"key": "contractNum",
+			"value": "6",
+			"type": "string"
+		},
+		{
+			"key": "addressId",
+			"value": "6",
+			"type": "string"
+		},
+		{
+			"key": "phoneId",
+			"value": "6",
+			"type": "string"
+		},
+		{
+			"key": "emailId",
+			"value": "6",
+			"type": "string"
+		}
+	]
+}

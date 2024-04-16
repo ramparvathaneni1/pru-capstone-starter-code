@@ -36,7 +36,7 @@ module.exports = function CustomerDao(pool) {
     gender, marital_status, dob,
     pref_address_type, pref_phone_type, pref_email_type, pref_language, is_active
     FROM customer
-    WHERE universal_id = $1 AND is_active = true
+    WHERE universal_id = $1
     ORDER BY universal_id ASC`;
 
   const GET_CONTRACT_BY_CONTRACT_NUM = `SELECT contract_num, line_of_business_code, company_code, product_code,
