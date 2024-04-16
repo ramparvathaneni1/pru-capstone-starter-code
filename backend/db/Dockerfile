@@ -4,8 +4,8 @@ FROM postgres
 ENV POSTGRES_PASSWORD docker
 # This is the password we'll define for the Docker Postgres instance
 
-ENV POSTGRES_DB capstone_db
+ENV POSTGRES_DB customer_db
 # This is what we'll name the database inside the container
 
-COPY capstone.sql /docker-entrypoint-initdb.d/
+COPY customer_db.sql /docker-entrypoint-initdb.d/
 # Copy the todo.sql file to the listed path in the container
