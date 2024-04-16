@@ -243,9 +243,10 @@ module.exports = function CustomerDao(pool) {
   };
 
   /*
-   * Returns {data, error}
+   * Returns {data, error, rowCount}
    * data = Data from DB. 0 or more records.
    * error = Any error when trying to query the DB.
+   * rowCount = Number of rows changed in DB.
    */
   this.getDataFromDB = async (query, params) => {
     let data = null;

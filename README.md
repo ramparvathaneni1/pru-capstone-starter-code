@@ -24,7 +24,7 @@ For instance, Admin Systems provide Contract information inclusive of Constituen
 - **Contract**
   - Entity representing a Contract Object
   - Primary Key = `contract_num`
-  - Foreign Key = `customer.univeral_id`
+  - Foreign Key = `customer.universal_id`
 
 - **Address**, **Phone** and **Email**
   - Entities representing Addresses, Phones and Emails associated with a **Customer**.
