@@ -281,7 +281,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"BUSINESS\",\n    \"addr_line_1\": \"321 Wash St\",\n    \"addr_line_2\": \"\",\n    \"city\": \"Newark\",\n    \"state\": \"NJ\",\n    \"zip\": 12345,\n    \"privacy_code\": 1\n}",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"WORK\",\n    \"addr_line_1\": \"321 Wash St\",\n    \"addr_line_2\": \"\",\n    \"city\": \"Newark\",\n    \"state\": \"NJ\",\n    \"zip\": 12345,\n    \"privacy_code\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -341,7 +341,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"BUSINESS\",\n    \"email\": \"test2@pru.com\",\n    \"privacy_code\": 1\n}",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"WORK\",\n    \"email\": \"test2@pru.com\",\n    \"privacy_code\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
