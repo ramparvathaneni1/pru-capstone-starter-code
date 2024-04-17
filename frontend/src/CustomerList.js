@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CustomerList({ customers, message }) {
+  const navigate = useNavigate();
+
   return (
     <>
       <h2>All Active Customers</h2>
@@ -44,6 +46,18 @@ export default function CustomerList({ customers, message }) {
               ))}
             </tbody>
           </table>
+          <div className="form-inline">
+            <button
+              className="add-btn"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/customers/new");
+              }}
+            >
+              Add Customer
+            </button>
+          </div>
         </div>
       )}
     </>

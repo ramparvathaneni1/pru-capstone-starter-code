@@ -36,6 +36,7 @@
 
 table.customer-list {
   width: 70%;
+  margin-bottom: 20px;
 }
 
 .customer-list tr:nth-child(even) {
