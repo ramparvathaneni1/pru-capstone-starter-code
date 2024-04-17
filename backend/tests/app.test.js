@@ -30,9 +30,11 @@ describe("Testing the POST Requests", () => {
       pref_address_type: "HOME",
       pref_phone_type: "HOME",
       pref_email_type: "HOME",
-      pref_language: "ENGLISH"
+      pref_language: "ENGLISH",
     };
-    const response = await request(app).post("/api/customer").send(testCustomer);
+    const response = await request(app)
+      .post("/api/customer")
+      .send(testCustomer);
     const newCustomer = response.body.newCustomer;
     expect(response.body.message.toLowerCase()).toContain("success");
     expect(response.body.newCustomer.first_name).toBe("Test");
@@ -50,9 +52,11 @@ describe("Testing the POST Requests", () => {
       effective_date: "1990-01-01",
       issue_date: "1990-01-01",
       termination_date: null,
-      universal_id: testUnivlId
+      universal_id: testUnivlId,
     };
-    const response = await request(app).post("/api/contract").send(testContract);
+    const response = await request(app)
+      .post("/api/contract")
+      .send(testContract);
     const newContract = response.body.newContract;
     expect(response.body.message.toLowerCase()).toContain("success");
     expect(newContract.company_code).toBe("COMP");
@@ -71,7 +75,7 @@ describe("Testing the POST Requests", () => {
       city: "Newark",
       state: "NJ",
       zip: 12345,
-      privacy_code: 1
+      privacy_code: 1,
     };
     const response = await request(app).post("/api/address").send(testAddress);
     const newAddress = response.body.newAddress;
@@ -89,7 +93,7 @@ describe("Testing the POST Requests", () => {
       type: "HOME",
       phone_num: 1234567890,
       phone_ext: 999,
-      privacy_code: 1
+      privacy_code: 1,
     };
     const response = await request(app).post("/api/phone").send(testPhone);
     const newPhone = response.body.newPhone;
@@ -106,7 +110,7 @@ describe("Testing the POST Requests", () => {
       universal_id: testUnivlId,
       type: "HOME",
       email: "test@pru.com",
-      privacy_code: 1
+      privacy_code: 1,
     };
     const response = await request(app).post("/api/email").send(testEmail);
     const newEmail = response.body.newEmail;
@@ -119,7 +123,6 @@ describe("Testing the POST Requests", () => {
 });
 
 describe("Testing the GET Requests", () => {
-
   // Testing GET All Customers
   test("should return all active Customers", async () => {
     const response = await request(app).get("/api/customer");
@@ -146,23 +149,26 @@ describe("Testing the GET Requests", () => {
     expect(response.body).toBeTruthy();
     expect(response.body.company_code).toBeTruthy();
     expect(response.statusCode).toBe(200);
-  })
+  });
 
   // Testing GET Contracts for Given Customer ID
   test("should return all Contracts by Customer ID", async () => {
-    const response = await request(app).get(`/api/customer/${testUnivlId}/contract`);
+    const response = await request(app).get(
+      `/api/customer/${testUnivlId}/contract`
+    );
     const contracts = response.body;
     expect(Array.isArray(contracts)).toBe(true);
     expect(contracts.length).toBeGreaterThan(0);
     expect(response.statusCode).toBe(200);
   });
-
 });
 
 describe("Testing the UPDATE Requests", () => {
-  // Update Customer 
+  // Update Customer
   test("should update Customer by ID", async () => {
-    const response = await request(app).put(`/api/customer/${testUnivlId}`).send({middle_name: "H"});
+    const response = await request(app)
+      .put(`/api/customer/${testUnivlId}`)
+      .send({ middle_name: "H" });
     expect(response.body.message.toLowerCase()).toContain("success");
     expect(response.body.updatedCustomer.middle_name).toBe("H");
     expect(response.statusCode).toBe(200);
@@ -170,7 +176,9 @@ describe("Testing the UPDATE Requests", () => {
 
   // Update Contract
   test("should update Contract by ID", async () => {
-    const response = await request(app).put(`/api/contract/${testContractNum}`).send({company_code: "WLMT"});
+    const response = await request(app)
+      .put(`/api/contract/${testContractNum}`)
+      .send({ company_code: "WLMT" });
     expect(response.body.message.toLowerCase()).toContain("success");
     expect(response.body.updatedContract.company_code).toBe("WLMT");
     expect(response.statusCode).toBe(200);
@@ -178,7 +186,9 @@ describe("Testing the UPDATE Requests", () => {
 
   // Update Address
   test("should update Address by ID", async () => {
-    const response = await request(app).put(`/api/address/${testAddressId}`).send({zip: 12345});
+    const response = await request(app)
+      .put(`/api/address/${testAddressId}`)
+      .send({ zip: 12345 });
     expect(response.body.message.toLowerCase()).toContain("success");
     expect(response.body.updatedAddress.zip).toBe(12345);
     expect(response.statusCode).toBe(200);
@@ -186,7 +196,9 @@ describe("Testing the UPDATE Requests", () => {
 
   // Update Phone
   test("should update Phones by ID", async () => {
-    const response = await request(app).put(`/api/phone/${testPhoneId}`).send({phone_ext: 12345});
+    const response = await request(app)
+      .put(`/api/phone/${testPhoneId}`)
+      .send({ phone_ext: 12345 });
     expect(response.body.message.toLowerCase()).toContain("success");
     expect(response.body.updatedPhone.phone_ext).toBe(12345);
     expect(response.statusCode).toBe(200);
@@ -194,7 +206,9 @@ describe("Testing the UPDATE Requests", () => {
 
   // Update Email
   test("should update Emails by ID", async () => {
-    const response = await request(app).put(`/api/email/${testEmailId}`).send({email: "test123@pru.com"});
+    const response = await request(app)
+      .put(`/api/email/${testEmailId}`)
+      .send({ email: "test123@pru.com" });
     expect(response.body.message.toLowerCase()).toContain("success");
     expect(response.body.updatedEmail.email).toBe("test123@pru.com");
     expect(response.statusCode).toBe(200);
@@ -225,7 +239,9 @@ describe("Testing the Delete Requests", () => {
 
   // Deactivate a Contract
   test("should deactivate Contract By Contract Number", async () => {
-    const response = await request(app).delete(`/api/contract/${testContractNum}`);
+    const response = await request(app).delete(
+      `/api/contract/${testContractNum}`
+    );
     expect(response.body.message.toLowerCase()).toContain("success");
     expect(response.statusCode).toBe(200);
   });

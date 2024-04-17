@@ -1,7 +1,7 @@
 export default function Home({ handleSearch }) {
   return (
     <>
-      <div class="search-box">
+      <div className="search-box">
         <form name="search-form">
           <input
             type="text"
@@ -15,7 +15,7 @@ export default function Home({ handleSearch }) {
           </button>
         </form>
       </div>
-      <div class="button-box"></div>
+      <div className="button-box"></div>
     </>
   );
 }

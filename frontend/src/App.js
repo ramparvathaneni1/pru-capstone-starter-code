@@ -1,22 +1,26 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Link, Route, Routes } from "react-router-dom";
+import { getAllActiveCustomers } from "./customer_api";
 import Home from "./Home";
 import CustomerList from "./CustomerList";
+import CustomerDetail from "./CustomerDetail";
 import AddCustomer from "./AddCustomer";
 import About from "./About";
 
-const backendApiUrl = "http://localhost:3001";
+export default function App() {
+  const [customers, setCustomers] = useState([]);
+  const [message, setMessage] = useState("");
 
-function App() {
-  async function fetchData() {
-    let response = await fetch(`${backendApiUrl}/api/customer`);
-    response = await response.json();
-    console.log(response);
+  // GET CustomerList from API
+  async function getCustomers() {
+    const { customers, message } = await getAllActiveCustomers();
+    setCustomers(customers);
+    setMessage(message);
   }
 
   useEffect(() => {
-    fetchData();
+    getCustomers();
   }, []);
 
   return (
@@ -41,7 +45,11 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/customers" element={<CustomerList />} />
+          <Route
+            path="/customers"
+            element={<CustomerList customers={customers} message={message} />}
+          />
+          <Route path="/customers/:id" element={<CustomerDetail />} />
           <Route path="/new" element={<AddCustomer />} />
           <Route path="/about" element={<About />} />
         </Routes>
@@ -49,5 +57,3 @@ function App() {
     </>
   );
 }
-
-export default App;
