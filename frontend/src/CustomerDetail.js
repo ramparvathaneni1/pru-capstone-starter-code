@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   getCustomerById,
   updateCustomerById,
@@ -10,14 +10,17 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
   const { id } = useParams();
   console.log("id = ", id);
   const [customer, setCustomer] = useState(null);
+  const [customerToUpdate, setCustomerToUpdate] = useState(customer);
   const [message, setMessage] = useState(null);
   const [isEditMode, setEditMode] = useState(false);
+  const navigate = useNavigate();
 
   // GET Customer By ID from API
   async function getCustomer(id) {
     const response = await getCustomerById(id);
     setCustomer(response.customer);
     setMessage(response.message);
+    setCustomerToUpdate(response.customer);
   }
 
   useEffect(() => {
@@ -26,37 +29,46 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
 
   // Make Heading from Org Name or Customer's Name
   const getHeading = () => {
-    if (!customer) {
+    if (!customerToUpdate) {
       return "";
     }
 
-    if (customer.is_org) {
-      return customer.org_name + " (Org)";
-    } else if (customer.middle_name) {
+    if (customerToUpdate.is_org) {
+      return customerToUpdate.org_name + " (Org)";
+    } else if (customerToUpdate.middle_name) {
       return (
-        customer.first_name +
+        customerToUpdate.first_name +
         " " +
-        customer.middle_name +
+        customerToUpdate.middle_name +
         " " +
-        customer.last_name
+        customerToUpdate.last_name
       );
     } else {
-      return customer.first_name + " " + customer.last_name;
+      return customerToUpdate.first_name + " " + customerToUpdate.last_name;
     }
   };
 
   // Event Handlers
   // Toggle Edit Mode between Edit button and Cancel button
-  const handleEditBtnToggle = (event) => {
+  const handleEditBtnClick = (event) => {
     event.preventDefault();
     setEditMode(!isEditMode);
   };
 
+  // Handle Reset/Cancel Button click
+  const handleResetBtnClick = async (event, isCancel) => {
+    setCustomerToUpdate(customer);
+    if (isCancel) {
+      setEditMode(!isEditMode);
+      navigate("/customers");
+    }
+  }
+
   // Toggle the Edit Mode, before sending the form data for Update API.
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    handleEditBtnToggle(event);
-    await updateCustomerById(customer);
+    setEditMode(!isEditMode);
+    await updateCustomerById(customerToUpdate);
     await getCustomer(id);
     handleUpdateCustomer(event);
   };
@@ -64,7 +76,7 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
   // Get Customer to delete and send to API
   const handleDeleteBtnClick = async (event) => {
     event.preventDefault();
-    const response = await deleteCustomerById(customer);
+    const response = await deleteCustomerById(customerToUpdate);
     console.log("Delete Customer Response = ", response);
     handleDeleteCustomer(event);
   };
@@ -72,13 +84,13 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
   // OnChange of each field, update the Customer Object
   const handleOnChangeFormField = async (event, fieldName) => {
     const value = event.target.value;
-    const updateObj = { ...customer };
+    const updateObj = { ...customerToUpdate };
     updateObj[fieldName] = value;
-    setCustomer(updateObj);
+    setCustomerToUpdate(updateObj);
   };
 
   const loadCustomerForm = () => {
-    if (!customer) {
+    if (!customerToUpdate) {
       return <p>Loading...</p>;
     }
     return (
@@ -92,7 +104,7 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
               <input
                 type="text"
                 name="universal-id"
-                defaultValue={customer.universal_id}
+                defaultValue={customerToUpdate.universal_id}
                 disabled={true}
               />
             </label>
@@ -102,13 +114,13 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
               <input
                 type="text"
                 name="cis-id"
-                defaultValue={customer.cis_id}
+                defaultValue={customerToUpdate.cis_id}
                 onChange={(e) => handleOnChangeFormField(e, "cis_id")}
                 disabled={!isEditMode}
               />
             </label>
           </div>
-          {!customer.is_org ? (
+          {!customerToUpdate.is_org ? (
             <>
               <div className="form-inline">
                 <label htmlFor="first-name">
@@ -117,7 +129,7 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
                   <input
                     type="text"
                     name="first-name"
-                    defaultValue={customer.first_name}
+                    defaultValue={customerToUpdate.first_name}
                     onChange={(e) => handleOnChangeFormField(e, "first_name")}
                     disabled={!isEditMode}
                   />
@@ -128,7 +140,7 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
                   <input
                     type="text"
                     name="middle-name"
-                    defaultValue={customer.middle_name}
+                    defaultValue={customerToUpdate.middle_name}
                     onChange={(e) => handleOnChangeFormField(e, "middle_name")}
                     disabled={!isEditMode}
                   />
@@ -139,7 +151,7 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
                   <input
                     type="text"
                     name="last-name"
-                    defaultValue={customer.last_name}
+                    defaultValue={customerToUpdate.last_name}
                     onChange={(e) => handleOnChangeFormField(e, "last_name")}
                     disabled={!isEditMode}
                   />
@@ -155,7 +167,7 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
                   <input
                     type="text"
                     name="org-name"
-                    defaultValue={customer.org_name}
+                    defaultValue={customerToUpdate.org_name}
                     onChange={(e) => handleOnChangeFormField(e, "org_name")}
                     disabled={!isEditMode}
                   />
@@ -170,7 +182,7 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
               <br />
               <select
                 name="gender"
-                defaultValue={customer.gender}
+                defaultValue={customerToUpdate.gender}
                 onChange={(e) => handleOnChangeFormField(e, "gender")}
                 disabled={!isEditMode}
               >
@@ -184,7 +196,7 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
               <br />
               <select
                 name="marital-status"
-                defaultValue={customer.marital_status}
+                defaultValue={customerToUpdate.marital_status}
                 onChange={(e) => handleOnChangeFormField(e, "marital_status")}
                 disabled={!isEditMode}
               >
@@ -202,7 +214,7 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
                 type="text"
                 name="dob"
                 defaultValue={
-                  customer.dob ? customer.dob.split("T")[0] : ""
+                  customerToUpdate.dob ? customerToUpdate.dob.split("T")[0] : ""
                 }
                 onChange={(e) => handleOnChangeFormField(e, "dob")}
                 disabled={!isEditMode}
@@ -210,9 +222,11 @@ export default function CustomerDetail({ handleDeleteCustomer, handleUpdateCusto
             </label>
           </div>
           <div className="form-inline">
-            <button onClick={(e) => handleEditBtnToggle(e)}>
-              {!isEditMode ? "Edit" : "Cancel"}
-            </button>
+            {!isEditMode ? 
+              <button type="button" className="edit-btn" onClick={(e) => handleEditBtnClick(e)}>Edit</button> :
+              <button type="reset" className="reset-btn" onClick={(e) => handleResetBtnClick(e, false)}>Reset</button> 
+            }
+            <button type="reset" onClick={(e) => handleResetBtnClick(e, true)}>Back</button>
             <button className="submit-btn" type="submit" disabled={!isEditMode}>
               Submit
             </button>
