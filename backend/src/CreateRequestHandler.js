@@ -2,13 +2,13 @@ module.exports = function (dao) {
   this.createCustomer = async (req, res) => {
     const request = req.body;
     const is_orgStr = "" + request.is_org;
+    console.log("request = ", request);
     if (
       !request ||
-      !request.first_name ||
-      !request.last_name ||
+      (is_orgStr === "false" && !request.first_name) ||
+      (is_orgStr === "false" && !request.last_name) ||
       !request.dob ||
       !request.cis_id ||
-      !request.first_name ||
       is_orgStr === "undefined" ||
       is_orgStr === "null" ||
       (is_orgStr === "true" && !request.org_name)
@@ -18,8 +18,8 @@ module.exports = function (dao) {
         message: "Unable to create new Customer. Required fields missing.",
         requiredFields: [
           "cis_id",
-          "first_name",
-          "last_name",
+          "first_name (if 'is_org' is false)",
+          "last_name (if 'is_org' is false)",
           "dob",
           "is_org",
           "org_name (if 'is_org' is true)",

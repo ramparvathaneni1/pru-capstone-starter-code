@@ -34,6 +34,30 @@
   text-align: center; */
 }
 
+table.customer-list {
+  width: 70%;
+}
+
+.customer-list tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+
+.customer-list td {
+  padding: 5px;
+}
+
+.customer-list th {
+  border-bottom: 2px solid lightslategray;
+}
+
+.customer-list .name {
+  text-align: left;
+}
+
+.customer-list .dob {
+  text-align: right;
+}
+
  /* Style the form - display items horizontally */
  .form-inline {
   display: flex;
@@ -60,6 +84,13 @@
   font-size: medium;
 }
 
+.form-inline input[type=checkbox] {
+  transform: scale(2);
+  height: 50px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
 .form-inline select {
   width: 218px;
 }
@@ -79,6 +110,7 @@
 }
 
 .form-inline button.delete-btn {
+  margin-left: 50px;
   background-color: crimson;
 }
 
@@ -91,12 +123,16 @@
 }
 
 .form-inline button.submit-btn {
-  margin-left: 50px;
+  
   background-color: green;
 }
 
 .form-inline button.submit-btn:hover {
   background-color: olive;
+}
+
+.form-inline button.submit-btn:disabled {
+  background-color: lightgray;
 }
 
 /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */

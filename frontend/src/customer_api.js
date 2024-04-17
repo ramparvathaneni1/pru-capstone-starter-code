@@ -4,25 +4,48 @@
 
 const baseUrl = "http://localhost:3001/api";
 
+export async function createCustomer(newCustomer) {
+  console.log("Creating new Customer = ", newCustomer);
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newCustomer),
+  };
+
+  try {
+    const response = await fetch(`${baseUrl}/customer`, options);
+    const data = await response.json();
+    console.log("Customer Create Response: ", data);
+  } catch (error) {
+    console.log(
+      `Error creating new Customer with CIS ID: ${newCustomer.cis_id}`,
+      error
+    );
+  }
+}
+
 export async function getAllActiveCustomers() {
   console.log("Loading All Active Customers from API");
   const response = await fetch(`${baseUrl}/customer`);
   const data = await response.json();
 
   if (data.message) {
-    return {message: data.message, customers: null};
+    return { message: data.message, customers: null };
   }
 
-  return {customers: data, message: ""};
+  return { customers: data, message: "" };
 }
 
 export async function getCustomerById(universalId) {
   const response = await fetch(`${baseUrl}/customer/${universalId}`);
   const data = await response.json();
   if (data.message) {
-    return {message: data.message, customer: null};    
+    return { message: data.message, customer: null };
   }
-  return {customer: data, message: ""};
+  return { customer: data, message: "" };
 }
 
 export async function updateCustomerById(customerToUpdate) {
@@ -40,10 +63,16 @@ export async function updateCustomerById(customerToUpdate) {
   try {
     const response = await fetch(`${baseUrl}/customer/${universalId}`, options);
     const data = await response.json();
-    console.log(`Customer (universalId: ${universalId}) Update Response: `, data);
+    console.log(
+      `Customer (universalId: ${universalId}) Update Response: `,
+      data
+    );
     return data;
   } catch (error) {
-    console.log(`Error updating Customer (universalId: ${universalId}): `, error);
+    console.log(
+      `Error updating Customer (universalId: ${universalId}): `,
+      error
+    );
     return error;
   }
 }
@@ -157,7 +186,10 @@ export async function deleteCustomerById(customerToUpdate) {
     console.log("Customer Delete Response: ", data);
     return data;
   } catch (error) {
-    console.log(`Error deleting Customer (universalId: ${universalId}): `, error);
+    console.log(
+      `Error deleting Customer (universalId: ${universalId}): `,
+      error
+    );
     return error;
   }
 }

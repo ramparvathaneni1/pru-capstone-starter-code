@@ -85,8 +85,7 @@ export default function About() {
         </li>
         <li>
           <p>
-            <strong>Address</strong>, <strong>Phone</strong> and
-            <strong>Email</strong>
+            <strong>Address</strong>, <strong>Phone</strong> and <strong>Email</strong>
           </p>
           <ul>
             <li>

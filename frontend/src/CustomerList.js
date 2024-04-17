@@ -8,13 +8,13 @@ export default function CustomerList({ customers, message }) {
         <p role="note">{message}</p>
       ) : (
         <div>
-          <table>
+          <table className="customer-list">
             <thead>
               <tr>
                 <th>Universal ID</th>
                 <th>CIS ID</th>
-                <th>Name</th>
-                <th>Date of Birth</th>
+                <th className="name">Name</th>
+                <th className="dob">Date of Birth</th>
                 <th>View / Edit</th>
               </tr>
             </thead>

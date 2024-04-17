@@ -1,8 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import { getAllActiveCustomers } from "./customer_api";
-import Home from "./Home";
 import CustomerList from "./CustomerList";
 import CustomerDetail from "./CustomerDetail";
 import AddCustomer from "./AddCustomer";
@@ -29,6 +28,15 @@ export default function App() {
     navigate("/customers");
   };
 
+  const handleUpdateCustomer = async () => {
+    await getCustomers();
+  };
+
+  const handleAddCustomer = async () => {
+    await getCustomers();
+    navigate("/customers");
+  };
+
   return (
     <>
       <div className="App">
@@ -36,13 +44,10 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/customers">Home</Link>
             </li>
             <li>
-              <Link to="/customers">View All</Link>
-            </li>
-            <li>
-              <Link to="/new">Add Customer</Link>
+              <Link to="/customers/new">Add Customer</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
@@ -50,14 +55,26 @@ export default function App() {
           </ul>
         </nav>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/customers" replace />} />
           <Route
             path="/customers"
             element={<CustomerList customers={customers} message={message} />}
           />
-          <Route path="/customers/:id" element={<CustomerDetail handleDeleteCustomer={handleDeleteCustomer} />} />
-          <Route path="/new" element={<AddCustomer />} />
+          <Route
+            path="/customers/:id"
+            element={
+              <CustomerDetail
+                handleDeleteCustomer={handleDeleteCustomer}
+                handleUpdateCustomer={handleUpdateCustomer}
+              />
+            }
+          />
+          <Route
+            path="/customers/new"
+            element={<AddCustomer handleAddCustomer={handleAddCustomer} />}
+          />
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<Navigate to="/customers" replace />} />
         </Routes>
       </div>
     </>

@@ -8,13 +8,13 @@ describe("Testing App Component", () => {
   });
 
   test("should display heading", () => {
-    const heading = screen.getByRole("heading");
+    const heading = screen.queryAllByRole("heading")[0];
     expect(heading).toHaveTextContent("Prudential Customer Gateway");
   });
 
   test("should display navigation", () => {
     const navItemArr = screen.queryAllByRole("listitem");
-    const expectedNavArr = ["Home", "View All", "Add Customer", "About"];
+    const expectedNavArr = ["Home", "Add Customer", "About"];
 
     for (let navItem of navItemArr) {
       expect(expectedNavArr).toContain(navItem.textContent);

@@ -45,55 +45,37 @@ module.exports = function (dao) {
     const addressResults = await dao.getAddressesByCustomerId(universalId);
     // Handle DB Errors
     if (addressResults.error) {
-      res.status(500).json({
-        message: `Error occurred while fetching Addresses for Customer ID ${universalId}`,
-      });
-      return;
+      console.log(`Error occurred while fetching Addresses for Customer ID ${universalId}`);
     }
     // Handle Addresses Not Found
     if (addressResults.data && addressResults.data.length <= 0) {
-      res.status(404).json({
-        message: `Addresses for Customer ID ${universalId} Not Found.`,
-      });
-      return;
+      console.log(`Addresses for Customer ID ${universalId} Not Found.`);
     }
-    const addresses = addressResults.data;
+    const addresses = addressResults && addressResults.data || [];
 
     // Fetch Phone Data
     const phoneResults = await dao.getPhonesByCustomerId(universalId);
     // Handle DB Errors
     if (phoneResults.error) {
-      res.status(500).json({
-        message: `Error occurred while fetching Phones for Customer ID ${universalId}`,
-      });
-      return;
+      console.log(`Error occurred while fetching Phones for Customer ID ${universalId}`);
     }
     // Handle Phones Not Found
     if (phoneResults.data && phoneResults.data.length <= 0) {
-      res.status(404).json({
-        message: `Phones for Customer ID ${universalId} Not Found.`,
-      });
-      return;
+      console.log(`Phones for Customer ID ${universalId} Not Found.`);
     }
-    const phones = phoneResults.data;
+    const phones = phoneResults && phoneResults.data || [];
 
     // Fetch Email Data
     const emailResults = await dao.getEmailsByCustomerId(universalId);
     // Handle DB Errors
     if (emailResults.error) {
-      res.status(500).json({
-        message: `Error occurred while fetching Emails for Customer ID ${universalId}`,
-      });
-      return;
+      console.log(`Error occurred while fetching Emails for Customer ID ${universalId}`);
     }
     // Handle Emails Not Found
     if (emailResults.data && emailResults.data.length <= 0) {
-      res.status(404).json({
-        message: `Emails for Customer ID ${universalId} Not Found.`,
-      });
-      return;
+      console.log(`Emails for Customer ID ${universalId} Not Found.`);
     }
-    const emails = emailResults.data;
+    const emails = emailResults && emailResults.data || [];
 
     // Combine all data to make Customer Details Object
     customer.addresses = addresses;
