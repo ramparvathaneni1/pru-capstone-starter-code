@@ -16,7 +16,6 @@ export default function CustomerList({ customers, message }) {
                 <th>Universal ID</th>
                 <th>CIS ID</th>
                 <th className="name">Name</th>
-                <th className="dob">Date of Birth</th>
                 <th>View / Edit</th>
               </tr>
             </thead>
@@ -34,7 +33,6 @@ export default function CustomerList({ customers, message }) {
                       ? `${customer.org_name} (Org)`
                       : `${customer.first_name} ${customer.middle_name} ${customer.last_name}`}
                   </td>
-                  <td className="dob">{customer.dob.split("T")[0]}</td>
                   <td className="viewedit">
                     <center>
                       <Link to={"/customers/" + customer.universal_id}>
