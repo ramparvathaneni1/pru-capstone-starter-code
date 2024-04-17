@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { getAllActiveCustomers } from "./customer_api";
 import Home from "./Home";
 import CustomerList from "./CustomerList";
@@ -11,6 +11,7 @@ import About from "./About";
 export default function App() {
   const [customers, setCustomers] = useState([]);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   // GET CustomerList from API
   async function getCustomers() {
@@ -22,6 +23,11 @@ export default function App() {
   useEffect(() => {
     getCustomers();
   }, []);
+
+  const handleDeleteCustomer = async () => {
+    await getCustomers();
+    navigate("/customers");
+  };
 
   return (
     <>
@@ -49,7 +55,7 @@ export default function App() {
             path="/customers"
             element={<CustomerList customers={customers} message={message} />}
           />
-          <Route path="/customers/:id" element={<CustomerDetail />} />
+          <Route path="/customers/:id" element={<CustomerDetail handleDeleteCustomer={handleDeleteCustomer} />} />
           <Route path="/new" element={<AddCustomer />} />
           <Route path="/about" element={<About />} />
         </Routes>

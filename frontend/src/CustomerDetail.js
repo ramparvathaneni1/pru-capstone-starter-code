@@ -1,30 +1,33 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   getCustomerById,
   updateCustomerById,
+  updateAddressById,
+  updatePhoneById,
+  updateEmailById,
   deleteCustomerById,
 } from "./customer_api";
 
-export default function CustomerDetail() {
+export default function CustomerDetail({handleDeleteCustomer}) {
   const { id } = useParams();
-  const [customerData, setCustomer] = useState({});
-  const [customerToUpdate, setCustomerToUpdate] = useState({ ...customerData });
-  const [message, setMessage] = useState("");
+  console.log("id = ", id);
+  // const [customerData, setCustomer] = useState({});
+  const [customerToUpdate, setCustomerToUpdate] = useState(null);
+  const [message, setMessage] = useState(null);
   const [isEditMode, setEditMode] = useState(false);
-  const navigate = useNavigate();
+  
 
   // GET Customer By ID from API
-  async function getCustomer() {
+  async function getCustomer(id) {
     const { customer, message } = await getCustomerById(id);
-    setCustomer(customer);
+    setCustomerToUpdate(customer);
     setMessage(message);
-    setCustomerToUpdate({...customer});
   }
 
   useEffect(() => {
-    getCustomer();
-  }, [customerData]);
+    getCustomer(id);
+  }, [id]);
 
   // Make Heading from Org Name or Customer's Name
   const getHeading = () => {
@@ -54,35 +57,51 @@ export default function CustomerDetail() {
     setEditMode(!isEditMode);
   };
 
+  // Handle OnChange Form Fields
+  const handleOnChangeFormFields = async (event, fieldName) => {
+    const updateObj = {...customerToUpdate};
+    let [rootLevelField, index, field] = fieldName.split(".");
+    const value = field && (field === "zip" || field === "phone_ext") ? parseInt(event.target.value) : event.target.value;
+
+    index = index ? parseInt(index) : null;
+    
+    if (field) {
+      updateObj[rootLevelField][parseInt(index)][field] = value;
+    } else {
+      updateObj[rootLevelField] = value;
+    }
+    
+    setCustomerToUpdate(updateObj);
+  };
+
   // Toggle the Edit Mode, before sending the form data for Update API.
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     handleEditBtnToggle(event);
-    const { message, updatedCustomer } = await updateCustomerById(
-      customerToUpdate
-    );
-    setCustomer(updatedCustomer);
-    setMessage(message);
+    await updateCustomerById(customerToUpdate);
+    await getCustomer(id);
   };
 
   // Get Customer to delete and send to API
   const handleDeleteBtnClick = async (event) => {
     event.preventDefault();
-    await deleteCustomerById(customerToUpdate);
-    navigate("/customers");
+    const {message} = await deleteCustomerById(customerToUpdate);
+    console.log("Delete Customer Response = ", message);
+    handleDeleteCustomer(event);
   };
 
-  return (
-    <>
-      {message ? (
-        <>
-          <h2>Customer Details</h2>
-          <p>{message}</p>
-        </>
-      ) : (
+  const loadForm = () => {
+    if (customerToUpdate) {
+      console.log("customerToUpdate = ", customerToUpdate);
+      return (
         <>
           <h2>{getHeading()}</h2>
-          <form name="customer-edit-form" onSubmit={handleFormSubmit}>
+          <form name="customer-edit-form" onSubmit={(e) => handleFormSubmit(e)}>
+            <div className="form-inline">
+              <button onClick={(e) => handleEditBtnToggle(e)}>{!isEditMode ? "Edit" : "Cancel"}</button>
+              <button className="delete-btn" onClick={(e) => handleDeleteBtnClick(e)}>Delete</button>
+              <button className="submit-btn" type="submit">Submit</button>
+            </div>
             <div className="form-inline">
               <label htmlFor="universal-id">
                 Universal ID
@@ -101,53 +120,75 @@ export default function CustomerDetail() {
                   type="text"
                   name="cis-id"
                   defaultValue={customerToUpdate.cis_id}
+                  onChange={(e) => handleOnChangeFormFields(e, "cis_id")}
                   disabled={!isEditMode}
                 />
               </label>
             </div>
-            <div className="form-inline">
-              <label htmlFor="first-name">
-                First Name
-                <br />
-                <input
-                  type="text"
-                  name="first-name"
-                  defaultValue={customerToUpdate.first_name}
-                  disabled={!isEditMode}
-                />
-              </label>
-              <label htmlFor="middle-name">
-                Middle Name
-                <br />
-                <input
-                  type="text"
-                  name="middle-name"
-                  defaultValue={customerToUpdate.middle_name}
-                  disabled={!isEditMode}
-                />
-              </label>
-              <label htmlFor="last-name">
-                Last Name
-                <br />
-                <input
-                  type="text"
-                  name="last-name"
-                  defaultValue={customerToUpdate.last_name}
-                  disabled={!isEditMode}
-                />
-              </label>
-            </div>
+            {!customerToUpdate.is_org ? (
+              <>
+                <div className="form-inline">
+                  <label htmlFor="first-name">
+                    First Name
+                    <br />
+                    <input
+                      type="text"
+                      name="first-name"
+                      defaultValue={customerToUpdate.first_name}
+                      onChange={(e) => handleOnChangeFormFields(e, "first_name")}
+                      disabled={!isEditMode}
+                    />
+                  </label>
+                  <label htmlFor="middle-name">
+                    Middle Name
+                    <br />
+                    <input
+                      type="text"
+                      name="middle-name"
+                      defaultValue={customerToUpdate.middle_name}
+                      onChange={(e) => handleOnChangeFormFields(e, "middle_name")}
+                      disabled={!isEditMode}
+                    />
+                  </label>
+                  <label htmlFor="last-name">
+                    Last Name
+                    <br />
+                    <input
+                      type="text"
+                      name="last-name"
+                      defaultValue={customerToUpdate.last_name}
+                      onChange={(e) => handleOnChangeFormFields(e, "last_name")}
+                      disabled={!isEditMode}
+                    />
+                  </label>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="form-inline">
+                  <label htmlFor="org-name">
+                    Org Name
+                    <br />
+                    <input
+                      type="text"
+                      name="org-name"
+                      defaultValue={customerToUpdate.org_name}
+                      onChange={(e) => handleOnChangeFormFields(e, "org_name")}
+                      disabled={!isEditMode}
+                    />
+                  </label>
+                </div>
+              </>
+            )}
+
             <div className="form-inline">
               <label htmlFor="gender">
                 Gender
                 <br />
                 <select
                   name="gender"
-                  defaultValue={
-                    customerToUpdate.gender
-                      ? customerToUpdate.gender
-                      : "Other"
-                  }
+                  defaultValue={customerToUpdate.gender}
+                  onChange={(e) => handleOnChangeFormFields(e, "gender")}
                   disabled={!isEditMode}
                 >
                   <option value="Male">Male</option>
@@ -160,11 +201,8 @@ export default function CustomerDetail() {
                 <br />
                 <select
                   name="marital-status"
-                  defaultValue={
-                    customerToUpdate.marital_status
-                      ? customerToUpdate.marital_status
-                      : "Unknown"
-                  }
+                  defaultValue={customerToUpdate.marital_status}
+                  onChange={(e) => handleOnChangeFormFields(e, "marital_status")}
                   disabled={!isEditMode}
                 >
                   <option value="Married">Married</option>
@@ -185,6 +223,7 @@ export default function CustomerDetail() {
                       ? customerToUpdate.dob.split("T")[0]
                       : ""
                   }
+                  onChange={(e) => handleOnChangeFormFields(e, "dob")}
                   disabled={!isEditMode}
                 />
               </label>
@@ -195,14 +234,18 @@ export default function CustomerDetail() {
                 <h3>Addresses</h3>
                 {customerToUpdate.addresses.map((address, index) => {
                   return (
-                    <>
+                    <div key={`addr-wrapper-${index}`}>
                       <div className="form-inline" key={`addr-div-${index}`}>
-                        <label htmlFor={`addr-${index}-type`} key={`addr-${index}-type`}>
+                        <label
+                          htmlFor={`addr-${index}-type`}
+                          key={`addr-${index}-type`}
+                        >
                           Type
                           <br />
                           <select
                             name={`addr-${index}-type`}
                             defaultValue={address.type}
+                            onChange={(e) => handleOnChangeFormFields(e, `addresses.${index}.type`)}
                             disabled={!isEditMode}
                           >
                             <option value="HOME">Home</option>
@@ -216,6 +259,7 @@ export default function CustomerDetail() {
                             type="text"
                             name={`addr-${index}-addr-line-1`}
                             defaultValue={address.addr_line_1}
+                            onChange={(e) => handleOnChangeFormFields(e, `addresses.${index}.addr_line_1`)}
                             disabled={!isEditMode}
                           />
                         </label>
@@ -226,6 +270,7 @@ export default function CustomerDetail() {
                             type="text"
                             name={`addr-${index}-addr-line-2`}
                             defaultValue={address.addr_line_2}
+                            onChange={(e) => handleOnChangeFormFields(e, `addresses.${index}.addr_line_2`)}
                             disabled={!isEditMode}
                           />
                         </label>
@@ -236,6 +281,7 @@ export default function CustomerDetail() {
                             type="text"
                             name={`addr-${index}-city`}
                             defaultValue={address.city}
+                            onChange={(e) => handleOnChangeFormFields(e, `addresses.${index}.city`)}
                             disabled={!isEditMode}
                           />
                         </label>
@@ -246,6 +292,7 @@ export default function CustomerDetail() {
                             type="text"
                             name={`addr-${index}-state`}
                             defaultValue={address.state}
+                            onChange={(e) => handleOnChangeFormFields(e, `addresses.${index}.state`)}
                             disabled={!isEditMode}
                           />
                         </label>
@@ -256,12 +303,13 @@ export default function CustomerDetail() {
                             type="text"
                             name={`addr-${index}-zip`}
                             defaultValue={address.zip}
+                            onChange={(e) => handleOnChangeFormFields(e, `addresses.${index}.zip`)}
                             disabled={!isEditMode}
                           />
                         </label>
                       </div>
                       <br key={`addr-break-${index}`} />
-                    </>
+                    </div>
                   );
                 })}
               </>
@@ -273,7 +321,7 @@ export default function CustomerDetail() {
                 <h3>Phones</h3>
                 {customerToUpdate.phones.map((phone, index) => {
                   return (
-                    <>
+                    <div key={`phone-wrapper-${index}`}>
                       <div className="form-inline" key={`phone-div-${index}`}>
                         <label htmlFor={`phone-${index}-type`}>
                           Type
@@ -281,6 +329,7 @@ export default function CustomerDetail() {
                           <select
                             name={`phone-${index}-type`}
                             defaultValue={phone.type}
+                            onChange={(e) => handleOnChangeFormFields(e, `phones.${index}.type`)}
                             disabled={!isEditMode}
                           >
                             <option value="HOME">Home</option>
@@ -295,6 +344,7 @@ export default function CustomerDetail() {
                             type="text"
                             name={`phone-${index}-phone-num`}
                             defaultValue={phone.phone_num}
+                            onChange={(e) => handleOnChangeFormFields(e, `phones.${index}.phone_num`)}
                             disabled={!isEditMode}
                           />
                         </label>
@@ -305,12 +355,13 @@ export default function CustomerDetail() {
                             type="text"
                             name={`phone-${index}-phone-ext`}
                             defaultValue={phone.phone_ext}
+                            onChange={(e) => handleOnChangeFormFields(e, `phones.${index}.phone_ext`)}
                             disabled={!isEditMode}
                           />
                         </label>
                       </div>
                       <br key={`phone-break-${index}`} />
-                    </>
+                    </div>
                   );
                 })}
               </>
@@ -322,7 +373,7 @@ export default function CustomerDetail() {
                 <h3>Emails</h3>
                 {customerToUpdate.emails.map((email, index) => {
                   return (
-                    <>
+                    <div key={`email-wrapper-${index}`}>
                       <div className="form-inline" key={`email-div-${index}`}>
                         <label htmlFor={`email-${index}-type`}>
                           Type
@@ -330,6 +381,7 @@ export default function CustomerDetail() {
                           <select
                             name={`email-${index}-type`}
                             defaultValue={email.type}
+                            onChange={(e) => handleOnChangeFormFields(e, `emails.${index}.type`)}
                             disabled={!isEditMode}
                           >
                             <option value="HOME">Home</option>
@@ -343,12 +395,13 @@ export default function CustomerDetail() {
                             type="text"
                             name={`email-${index}-email`}
                             defaultValue={email.email}
+                            onChange={(e) => handleOnChangeFormFields(e, `emails.${index}.email`)}
                             disabled={!isEditMode}
                           />
                         </label>
                       </div>
                       <br key={`email-break-${index}`} />
-                    </>
+                    </div>
                   );
                 })}
               </>
@@ -357,6 +410,20 @@ export default function CustomerDetail() {
             )}
           </form>
         </>
+      );
+    }
+    return <p>Loading...</p>;
+  };
+
+  return (
+    <>
+      {message ? (
+        <>
+          <h2>Customer Details</h2>
+          <p>{message}</p>
+        </>
+      ) : (
+        loadForm()
       )}
     </>
   );
