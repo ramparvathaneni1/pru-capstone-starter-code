@@ -17,6 +17,7 @@ sudo docker rm $(sudo docker ps -a -q)
 ####### Create Docker Network #######
 sudo docker network create pru-app
 
+
 ####### Build DB Image #######
 cd ./backend/db
 sudo docker build . -t pru-app-db
@@ -33,4 +34,15 @@ sudo docker build . -t pru-app-backend
 sudo docker run -d --name pru-app-backend-container -p 3001:3001 --network pru-app pru-app-backend
 
 
+####### Build Frontend Image #######
+cd ../frontend
+sudo docker build . -t pru-app-frontend
 
+# Start the Frontend Container
+sudo docker run -d --name pru-app-frontend-container -p 3000:3000 --network pru-app pru-app-frontend
+
+
+####### Restart Docker Containers #######
+sudo docker start pru-app-db-container
+sudo docker start pru-app-backend-container
+sudo docker start pru-app-frontend-container
