@@ -1,3 +1,4 @@
+require('dotenv').config({path: './.env'});
 const express = require("express");
 const cors = require("cors");
 const Pool = require("pg").Pool;
@@ -7,23 +8,15 @@ const UpdateRequestHandler = require("./src/UpdateRequestHandler.js");
 const DeleteRequestHandler = require("./src/DeleteRequestHandler.js");
 const CreateRequestHandler = require("./src/CreateRequestHandler.js");
 
-// TO RUN YOUR SERVER LOCALLY, USE THIS POOL VARIABLE
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost", // MAKE SURE YOU CHANGE THE HOST FOR YOUR DOCKER IMAGE
-  database: "customer_db",
-  password: "postgres", // FOR DOCKER - CHANGE THIS TO DOCKER
-  port: 5432,
+  user: process.env.DB_USER || "postgres",
+  host: process.env.DB_ENDPOINT || "localhost",
+  database: process.env.DB_NAME || "customer_db",
+  password: process.env.DB_PASS || "postgres",
+  port: 5432
 });
 
-// TO BUILD YOUR DOCKER IMAGE, USE THIS POOL VARIABLE INSTEAD
-// const pool = new Pool({
-//   user: "postgres",
-//   host: "db-container", // WE'VE CHANGED THE HOST NAME
-//   database: "capstone_db",
-//   password: "docker", // CHANGED PASSWORD TO DOCKER
-//   port: 5432,
-// });
+console.log("EXPRESS_ENV = ", process.env.EXPRESS_ENV);
 
 const dao = new CustomerDao(pool);
 

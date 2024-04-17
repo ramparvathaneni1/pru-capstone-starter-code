@@ -4,6 +4,13 @@ FROM node:alpine
 WORKDIR /usr/src/app
 # Create app directory
 
+ENV EXPRESS_ENV docker
+ENV DB_ENDPOINT pru-app-db-container
+ENV DB_USER postgres
+ENV DB_PASS docker
+ENV DB_NAME customer_db
+# Setting DB ENV variables
+
 COPY . .
 # Copy the app to the directory
 
