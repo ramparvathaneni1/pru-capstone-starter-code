@@ -7,10 +7,7 @@ export default function AddCustomer({ handleAddCustomer }) {
   marital_status: "Unknown",
   is_org: false};
   const [customer, setCustomer] = useState(blankCustomer);
-  const [disableSubmit, setDisableSubmit] = useState(true);
-  const navigate = useNavigate(); 
-
-  console.log("disableSubmit = ", disableSubmit);
+  const navigate = useNavigate();
 
   // Toggle the Edit Mode, before sending the form data for Update API.
   const handleFormSubmit = async (event) => {
@@ -31,7 +28,6 @@ export default function AddCustomer({ handleAddCustomer }) {
   // Handle Cancel Button click
   const handleFormReset = (event, isCancel) => {
     setCustomer(blankCustomer);
-    setDisableSubmit(true);
     if (isCancel) {
       navigate("/customers");
     }
@@ -45,7 +41,6 @@ export default function AddCustomer({ handleAddCustomer }) {
     } else {
       isFormValid = isFormValid && customer.first_name && customer.last_name;
     }
-    setDisableSubmit(!isFormValid);
   };
 
   return (
@@ -170,7 +165,7 @@ export default function AddCustomer({ handleAddCustomer }) {
         <div className="form-inline">
           <button className="reset-btn" type="reset" onClick={(e) => handleFormReset(e, false)}>Reset</button>
           <button className="cancel-btn" type="reset" onClick={(e) => handleFormReset(e, true)}>Cancel</button>
-          <button className="primary" type="submit" disabled={disableSubmit}>Submit</button>
+          <button className="primary" type="submit">Submit</button>
         </div>
       </form>
     </>
