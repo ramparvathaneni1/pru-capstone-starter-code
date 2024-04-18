@@ -14,6 +14,9 @@ sudo docker stop $(sudo docker ps -a -q)
 # Remove all Docker Containers
 sudo docker rm $(sudo docker ps -a -q)
 
+# Remove all Previously created images
+sudo docker rmi $(sudo docker images pru-app* -q)
+
 ####### Create Docker Network #######
 sudo docker network create pru-app
 
@@ -24,7 +27,7 @@ sudo docker build . -t pru-app-db
 # Start the DB Container
 sudo docker run -d --name pru-app-db-container -p 5432:5432 --network pru-app pru-app-db
 # Check if DB Container is running and schema is loaded sucessfully
-sudo docker exec -it pru-app-db-container psql customer_db -U postgres
+# sudo docker exec -it pru-app-db-container psql customer_db -U postgres
 
 
 ####### Build Backend Image #######
@@ -41,6 +44,8 @@ sudo docker build . -t pru-app-frontend
 # Start the Frontend Container
 sudo docker run -d --name pru-app-frontend-container -p 3000:3000 --network pru-app pru-app-frontend
 
+# See running containers
+sudo docker ps
 
 ####### Restart Docker Containers #######
 sudo docker start pru-app-db-container
