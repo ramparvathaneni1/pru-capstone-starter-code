@@ -6,7 +6,6 @@ describe("Customer API End-To-End Tests", function () {
 
     beforeAll(async function () {
         driver = await new selenium.Builder().forBrowser("chrome").build();
-        await driver.manage().window().maximize();
         await driver.get("http://localhost:3000/customers");
     });
 
@@ -66,7 +65,7 @@ describe("Customer API End-To-End Tests", function () {
       await driver.sleep(500);
 
       // Click Delete button
-      const deleteBtn = await driver.findElement(selenium.By.css("button.delete-btn"));
+      const deleteBtn = await driver.findElement(selenium.By.css("button.delete"));
       await deleteBtn.click();
       await driver.sleep(500);
 

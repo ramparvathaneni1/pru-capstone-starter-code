@@ -74,7 +74,7 @@ describe("Testing the POST Requests", () => {
       addr_line_2: "",
       city: "Newark",
       state: "NJ",
-      zip: 12345,
+      zip: "12345",
       privacy_code: 1,
     };
     const response = await request(app).post("/api/address").send(testAddress);
@@ -91,14 +91,14 @@ describe("Testing the POST Requests", () => {
     const testPhone = {
       universal_id: testUnivlId,
       type: "HOME",
-      phone_num: 1234567890,
-      phone_ext: 999,
+      phone_num: "1234567890",
+      phone_ext: "999",
       privacy_code: 1,
     };
     const response = await request(app).post("/api/phone").send(testPhone);
     const newPhone = response.body.newPhone;
     expect(response.body.message.toLowerCase()).toContain("success");
-    expect(newPhone.phone_ext).toBe(999);
+    expect(newPhone.phone_ext).toBe("999");
     expect(newPhone.universal_id).toBe(testUnivlId);
     expect(response.statusCode).toBe(200);
     testPhoneId = newPhone.id;
@@ -188,9 +188,9 @@ describe("Testing the UPDATE Requests", () => {
   test("should update Address by ID", async () => {
     const response = await request(app)
       .put(`/api/address/${testAddressId}`)
-      .send({ zip: 12345 });
+      .send({ zip: "12345" });
     expect(response.body.message.toLowerCase()).toContain("success");
-    expect(response.body.updatedAddress.zip).toBe(12345);
+    expect(response.body.updatedAddress.zip).toBe("12345");
     expect(response.statusCode).toBe(200);
   });
 
@@ -198,9 +198,9 @@ describe("Testing the UPDATE Requests", () => {
   test("should update Phones by ID", async () => {
     const response = await request(app)
       .put(`/api/phone/${testPhoneId}`)
-      .send({ phone_ext: 12345 });
+      .send({ phone_ext: "12345" });
     expect(response.body.message.toLowerCase()).toContain("success");
-    expect(response.body.updatedPhone.phone_ext).toBe(12345);
+    expect(response.body.updatedPhone.phone_ext).toBe("12345");
     expect(response.statusCode).toBe(200);
   });
 
