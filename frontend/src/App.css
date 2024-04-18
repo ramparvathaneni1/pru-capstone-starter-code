@@ -1,5 +1,20 @@
 .App {
-  margin: 30px;
+  padding: 30px;
+}
+
+.App .logo {
+  float: left;
+}
+.App .clear {
+  clear: both;
+}
+.App .heading img {
+  height: 85px;
+}
+
+.App h1 {
+  float: left;
+  margin-left: 20px;
 }
 
 .App nav ul {
@@ -7,7 +22,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: dodgerblue;
+  background-color: #001836;
 }
 
 .App nav ul li {
@@ -24,7 +39,52 @@
 }
 
 .App nav ul li a:hover {
-  background-color: royalblue;
+  background-color: #06c;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0px 10px 10px 10px;
+  background-color: #fff;
+  border: 1px solid #06c;
+  color: #06c;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #e5effa;
+}
+
+button:disabled, button.primary:disabled, button.delete:disabled {
+  background-color: lightgray;
+  border: 1px solid lightgray;
+  color: gray;
+}
+
+button:disabled:hover, button.primary:disabled:hover, button.delete:disabled:hover {
+  background-color: lightgray;
+  border: 1px solid lightgray;
+}
+
+button.primary {
+  background-color: #ffd200;
+  border: 1px solid #ffd200;
+  color: black;
+}
+
+button.primary:hover {
+  background-color: #ffed84;
+}
+
+button.delete {
+  background-color: #d93636;
+  color: white;
+  border: 1px solid #d93636;
+}
+
+button.delete:hover {
+  background-color: #ee4e4e;
 }
 
 /* Home */
@@ -50,15 +110,7 @@ table.customer-list {
 
 .customer-list td button {
   padding: 5px 10px;
-  background-color: dodgerblue;
-  border: 1px solid #ddd;
-  color: white;
-  font-weight: bold;
-  border-radius: 15px;
-}
-
-.customer-list td button:hover {
-  background-color: royalblue;
+  margin-bottom: 2px;
 }
 
 .customer-list th {
@@ -114,44 +166,20 @@ table.customer-list {
   background-color: #eee;
 }
 
-/* Style the submit button */
-.form-inline button {
-  padding: 10px 20px;
-  margin: 0px 10px 10px 10px;
-  background-color: dodgerblue;
-  border: 1px solid #ddd;
-  color: white;
-  font-weight: bold;
-  border-radius: 15px;
+.form-inline button.delete {
+  margin-left: 80px;
 }
 
-.form-inline button.delete-btn {
+h3 .inactive {
   margin-left: 50px;
-  background-color: #FF3131;
-  border-radius: 15px;
+  color: crimson;
+  font-size: 
 }
 
-.form-inline button:hover {
-  background-color: royalblue;
-}
-
-.form-inline button.delete-btn:hover {
-  background-color: #A52A2A;
-}
-
-.form-inline button.submit-btn {
-  background-color: #35A400;
-  border-radius: 15px;
-}
-
-.form-inline button.submit-btn:hover {
-  /* background-color: #35A400; */
-  background-color: green;
-}
-
-.form-inline button.submit-btn:disabled {
+/* .form-inline button.primary:disabled {
   background-color: lightgray;
-}
+  border-color: 1px solid lightgray;
+} */
 
 /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
 @media (max-width: 800px) {

@@ -1,4 +1,5 @@
 import "./App.css";
+import logo from "./images/pru-logo.png";
 import { useState, useEffect } from "react";
 import { Link, Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import { getAllActiveCustomers } from "./customer_api";
@@ -40,7 +41,11 @@ export default function App() {
   return (
     <>
       <div className="App">
-        <h1>Prudential Customer Gateway</h1>
+        <div className="heading">
+          <div className="logo"><img src={logo} className="pru-logo" alt="pru-logo"/></div>
+          <h1>Prudential Customer Gateway</h1>
+        </div>
+        <div className="clear"></div>
         <nav>
           <ul>
             <li>

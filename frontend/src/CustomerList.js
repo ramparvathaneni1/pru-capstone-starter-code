@@ -36,7 +36,7 @@ export default function CustomerList({ customers, message }) {
                   <td className="viewedit">
                     <center>
                       <Link to={"/customers/" + customer.universal_id}>
-                        <button class="view-btn">View / Edit</button>
+                        <button className="view-btn">View / Edit</button>
                       </Link>
                     </center>
                   </td>
