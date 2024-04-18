@@ -9,3 +9,11 @@
 - Do Docker Images
 - Functional Testing using Docker Images
 - Prepare for presentation.
+
+
+- Run in Docker
+- docker ps
+- CRUD in front end
+- Biggest Challenges from capstone
+- Biggest wins from capstone
+- shout out to peers who helped out in training.
