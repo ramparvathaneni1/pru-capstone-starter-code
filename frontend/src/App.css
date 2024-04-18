@@ -173,13 +173,19 @@ table.customer-list {
 h3 .inactive {
   margin-left: 50px;
   color: crimson;
-  font-size: 
 }
 
-/* .form-inline button.primary:disabled {
-  background-color: lightgray;
-  border-color: 1px solid lightgray;
-} */
+.data-wrapper {
+  margin-bottom: 10px;
+}
+
+.data-wrapper textarea {
+  width: 680px;
+  height: 160px;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: scroll;
+}
 
 /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
 @media (max-width: 800px) {

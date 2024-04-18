@@ -19,11 +19,113 @@ export async function createCustomer(newCustomer) {
     const response = await fetch(`${baseUrl}/customer`, options);
     const data = await response.json();
     console.log("Customer Create Response: ", data);
+    return data;
   } catch (error) {
     console.log(
       `Error creating new Customer with CIS ID: ${newCustomer.cis_id}`,
       error
     );
+    return error;
+  }
+}
+
+export async function createContract(newContract) {
+  console.log("Creating new Contract = ", newContract);
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newContract),
+  };
+
+  try {
+    const response = await fetch(`${baseUrl}/contract`, options);
+    const data = await response.json();
+    console.log("Contract Create Response: ", data);
+    return data;
+  } catch (error) {
+    console.log(
+      `Error creating new Contract for Customer ID: ${newContract.universal_id}`,
+      error
+    );
+    return error;
+  }
+}
+
+export async function createAddress(newAddress) {
+  console.log("Creating new Address = ", newAddress);
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newAddress),
+  };
+
+  try {
+    const response = await fetch(`${baseUrl}/address`, options);
+    const data = await response.json();
+    console.log("Address Create Response: ", data);
+    return data;
+  } catch (error) {
+    console.log(
+      `Error creating new Address for Customer ID: ${newAddress.universal_id}`,
+      error
+    );
+    return error;
+  }
+}
+
+export async function createPhone(newPhone) {
+  console.log("Creating new Phone = ", newPhone);
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newPhone),
+  };
+
+  try {
+    const response = await fetch(`${baseUrl}/phone`, options);
+    const data = await response.json();
+    console.log("Phone Create Response: ", data);
+    return data;
+  } catch (error) {
+    console.log(
+      `Error creating new Phone for Customer ID: ${newPhone.universal_id}`,
+      error
+    );
+    return error;
+  }
+}
+
+export async function createEmail(newEmail) {
+  console.log("Creating new Email = ", newEmail);
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newEmail),
+  };
+
+  try {
+    const response = await fetch(`${baseUrl}/email`, options);
+    const data = await response.json();
+    console.log("Email Create Response: ", data);
+    return data;
+  } catch (error) {
+    console.log(
+      `Error creating new Email for Customer ID: ${newEmail.universal_id}`,
+      error
+    );
+    return error;
   }
 }
 

@@ -6,6 +6,7 @@ import { getAllActiveCustomers } from "./customer_api";
 import CustomerList from "./CustomerList";
 import CustomerDetail from "./CustomerDetail";
 import AddCustomer from "./AddCustomer";
+import LoadCustomers from "./LoadCustomers";
 import About from "./About";
 
 export default function App() {
@@ -55,6 +56,9 @@ export default function App() {
               <Link to="/customers/new">Add Customer</Link>
             </li>
             <li>
+              <Link to="/customers/load">Load Customers</Link>
+            </li>
+            <li>
               <Link to="/about">About</Link>
             </li>
           </ul>
@@ -78,6 +82,7 @@ export default function App() {
             path="/customers/new"
             element={<AddCustomer handleAddCustomer={handleAddCustomer} />}
           />
+          <Route path="/customers/load" element={<LoadCustomers handleAddCustomer={handleAddCustomer} />}/>
           <Route path="/about" element={<About />} />
           <Route path="*" element={<Navigate to="/customers" replace />} />
         </Routes>

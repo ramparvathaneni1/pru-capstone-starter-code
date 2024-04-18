@@ -45,7 +45,7 @@ CREATE TABLE customer_address (
     addr_line_2 VARCHAR(30),
     city VARCHAR(30),
     state VARCHAR(2),
-    zip INT,
+    zip VARCHAR(5),
     privacy_code INT
 );
 
@@ -53,8 +53,8 @@ CREATE TABLE customer_phone (
     id SERIAL PRIMARY KEY,
     universal_id INT,
     type VARCHAR(20),
-    phone_num BIGINT,
-    phone_ext INT,
+    phone_num VARCHAR(10),
+    phone_ext VARCHAR(5),
     privacy_code INT
 );
 
@@ -104,14 +104,14 @@ VALUES (1, 'HOME', '57058 Homewood Way', 'Apt 1277', 'Brockton', 'MA', '02405', 
 
 INSERT INTO customer_phone (universal_id, type, phone_num, phone_ext, privacy_code) 
 VALUES (1, 'HOME', 5754121760, NULL, 1),
-    (1, 'WORK', 6336927470, 410, 3),
-    (2, 'HOME', 5735678522, NULL, 1),
-    (2, 'WORK', 6623261796, 21,  3),
-    (3, 'HOME', 6585892837, NULL, 1),
-    (3, 'WORK', 1247513814, NULL, 3),
-    (4, 'WORK', 4196738405, NULL, 3),
-    (5, 'WORK', 3132002489, NULL, 3),
-    (6, 'WORK', 2624339005, NULL, 3);
+    (1, 'WORK', '6336927470', '410', 3),
+    (2, 'HOME', '5735678522', NULL, 1),
+    (2, 'WORK', '6623261796', '21',  3),
+    (3, 'HOME', '6585892837', NULL, 1),
+    (3, 'WORK', '1247513814', NULL, 3),
+    (4, 'WORK', '4196738405', NULL, 3),
+    (5, 'WORK', '3132002489', NULL, 3),
+    (6, 'WORK', '2624339005', NULL, 3);
 
 INSERT INTO customer_email (universal_id, type, email, privacy_code) 
 VALUES (1, 'HOME', 'john.doe@email.com', 1),

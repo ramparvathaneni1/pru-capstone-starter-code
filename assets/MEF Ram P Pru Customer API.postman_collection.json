@@ -71,7 +71,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"addr_line_1\": \"123 Wash St\",\n    \"addr_line_2\": \"\",\n    \"city\": \"Newark\",\n    \"state\": \"NJ\",\n    \"zip\": 12345,\n    \"privacy_code\": 1\n}",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"addr_line_1\": \"123 Wash St\",\n    \"addr_line_2\": \"\",\n    \"city\": \"Newark\",\n    \"state\": \"NJ\",\n    \"zip\": \"12345\",\n    \"privacy_code\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,7 +100,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"phone_num\": 1234567890,\n    \"phone_ext\": 999,\n    \"privacy_code\": 1\n}",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"phone_num\": \"1234567890\",\n    \"phone_ext\": \"999\",\n    \"privacy_code\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -281,7 +281,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"WORK\",\n    \"addr_line_1\": \"321 Wash St\",\n    \"addr_line_2\": \"\",\n    \"city\": \"Newark\",\n    \"state\": \"NJ\",\n    \"zip\": 12345,\n    \"privacy_code\": 1\n}",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"WORK\",\n    \"addr_line_1\": \"321 Wash St\",\n    \"addr_line_2\": \"\",\n    \"city\": \"Newark\",\n    \"state\": \"NJ\",\n    \"zip\": \"12345\",\n    \"privacy_code\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -311,7 +311,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"phone_num\": 9876543210,\n    \"phone_ext\": 100,\n    \"privacy_code\": 1\n}",
+					"raw": "{\n    \"universal_id\": {{universalId}},\n    \"type\": \"HOME\",\n    \"phone_num\": \"9876543210\",\n    \"phone_ext\": \"100\",\n    \"privacy_code\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -493,27 +493,27 @@
 	"variable": [
 		{
 			"key": "universalId",
-			"value": "4",
+			"value": "7",
 			"type": "string"
 		},
 		{
 			"key": "contractNum",
-			"value": "6",
+			"value": "13",
 			"type": "string"
 		},
 		{
 			"key": "addressId",
-			"value": "6",
+			"value": "10",
 			"type": "string"
 		},
 		{
 			"key": "phoneId",
-			"value": "6",
+			"value": "10",
 			"type": "string"
 		},
 		{
 			"key": "emailId",
-			"value": "6",
+			"value": "10",
 			"type": "string"
 		}
 	]
