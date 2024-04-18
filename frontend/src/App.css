@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: dodgerblue;
 }
 
 .App nav ul li {
@@ -20,18 +20,19 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .App nav ul li a:hover {
-  background-color: #111;
+  background-color: royalblue;
 }
 
 /* Home */
 .App .search-box {
   padding: 10px;
-  /* margin: auto;
+  margin: auto;
   width: 50%;
-  text-align: center; */
+  text-align: center;
 }
 
 table.customer-list {
@@ -40,11 +41,24 @@ table.customer-list {
 }
 
 .customer-list tr:nth-child(even) {
-  background-color: #D6EEEE;
+  background-color: #C0D3FF;
 }
 
 .customer-list td {
   padding: 5px;
+}
+
+.customer-list td button {
+  padding: 5px 10px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+}
+
+.customer-list td button:hover {
+  background-color: royalblue;
 }
 
 .customer-list th {
@@ -79,7 +93,6 @@ table.customer-list {
   margin: 5px 10px 5px 0;
   padding: 10px;
   background-color: #fff;
-  /* border: none; */
   border: 1px solid lightslategray;
   color: black;
   font-size: medium;
@@ -108,11 +121,14 @@ table.customer-list {
   background-color: dodgerblue;
   border: 1px solid #ddd;
   color: white;
+  font-weight: bold;
+  border-radius: 15px;
 }
 
 .form-inline button.delete-btn {
   margin-left: 50px;
-  background-color: crimson;
+  background-color: #FF3131;
+  border-radius: 15px;
 }
 
 .form-inline button:hover {
@@ -120,16 +136,17 @@ table.customer-list {
 }
 
 .form-inline button.delete-btn:hover {
-  background-color: brown;
+  background-color: #A52A2A;
 }
 
 .form-inline button.submit-btn {
-  
-  background-color: green;
+  background-color: #35A400;
+  border-radius: 15px;
 }
 
 .form-inline button.submit-btn:hover {
-  background-color: olive;
+  /* background-color: #35A400; */
+  background-color: green;
 }
 
 .form-inline button.submit-btn:disabled {

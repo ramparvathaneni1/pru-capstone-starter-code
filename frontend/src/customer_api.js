@@ -48,6 +48,15 @@ export async function getCustomerById(universalId) {
   return { customer: data, message: "" };
 }
 
+export async function getContractsByCustomerId(universalId) {
+  const response = await fetch(`${baseUrl}/customer/${universalId}/contract`);
+  const data = await response.json();
+  if (data.message) {
+    return { message: data.message, customer: null };
+  }
+  return { contracts: data, message: "" };
+}
+
 export async function updateCustomerById(customerToUpdate) {
   console.log("Updating Customer: ", customerToUpdate);
   const universalId = customerToUpdate.universal_id;

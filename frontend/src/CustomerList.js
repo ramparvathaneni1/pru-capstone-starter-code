@@ -16,7 +16,7 @@ export default function CustomerList({ customers, message }) {
                 <th>Universal ID</th>
                 <th>CIS ID</th>
                 <th className="name">Name</th>
-                <th>View / Edit</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -36,7 +36,7 @@ export default function CustomerList({ customers, message }) {
                   <td className="viewedit">
                     <center>
                       <Link to={"/customers/" + customer.universal_id}>
-                        <em>View/Edit</em>
+                        <button class="view-btn">View / Edit</button>
                       </Link>
                     </center>
                   </td>
